@@ -1,26 +1,34 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div v-if="error">Error: {{ error }}</div>
+  <div v-else-if="isLoading">Loading...</div>
+  <div v-else>finished!</div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
-}
+  data() {
+    return {
+      isLoading: true,
+      error: null,
+    };
+  },
+  mounted() {
+    const eventSource = new EventSource('http://127.0.0.1:5000/events');
+    eventSource.onmessage = (event) => {
+      const data = JSON.parse(event.data);
+      if (data.message === 'Server is ready!') {
+        console.log('got server ready message')
+        this.isLoading = false;
+      } else if (data.error) {
+        this.error = data.error;
+      } else {
+        // Process other event data
+      }
+    };
+    eventSource.onerror = (error) => {
+      console.error(error)
+      this.error = 'Connection error';
+    };
+  },
+};
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
