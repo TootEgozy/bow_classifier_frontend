@@ -32,5 +32,11 @@ export default {
       this.error = 'Connection error';
     };
   },
+  methods: {
+    async getServerReadyMsg() {
+      const res = await axios.get('http://localhost:5000/server_ready');
+      if(!res.data.processing_done) console.log('not done') //finish this
+    }
+  }
 };
 </script>
