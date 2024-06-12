@@ -1,54 +1,37 @@
 <template>
-  <div v-if="error">Error: {{ error }}</div>
-  <div v-else-if="isLoading">Loading...</div>
-  <div v-else>finished!</div>
+  <div v-if="serverReady">App main page</div>
+  <div v-else>Loading...</div>
 </template>
 
 <script>
 
+import axios from "axios";
+
 export default {
   data() {
     return {
-      isLoading: true,
-      error: null,
+      serverReady: false,
     };
   },
   mounted() {
-    this.checkServerReadiness();
-    // const eventSource = new EventSource('http://127.0.0.1:5000/server_ready');
-    // eventSource.onmessage = (event) => {
-    //   const data = JSON.parse(event.data);
-    //   console.log(data);
-    //   if (data.message === 'Server is ready!') {
-    //     console.log('got server ready message')
-    //     this.isLoading = false;
-    //   // } else if (data.error) {
-    //   //   this.error = data.error;
-    //   } else {
-    //     // Process other event data
-    //   }
-    // };
-    // eventSource.onerror = (error) => {
-    //   console.error(error)
-    //   this.error = 'Connection error';
-    // };
+    this.checkServerReady();
   },
   methods: {
-    async checkServerReadiness() {
-      while (this.isLoading) {
-        try {
-          const response = await fetch('http://127.0.0.1:5000/server_ready');
-          if (response.status === 200) {
-            this.isLoading = false;
-            const parsed = JSON.parse(response.body);
-            console.log(parsed);
-          } else {
-            await this.sleep(3);
-          }
-        } catch (error) {
-          console.error('Error checking server readiness:', error);
+    async checkServerReady() {
+      try {
+        const res = await axios.get('http://127.0.0.1:5000/server_ready');
+        if(!res?.data?.server_ready) {
           await this.sleep(3);
+          console.log('not ready yet...');
+          this.checkServerReady();
+        } else {
+          console.log('server ready!');
+          this.serverReady = true;
         }
+      } catch (e) {
+        if(e.message === "Network Error") console.log('Waiting for server');
+        await this.sleep(3);
+        this.checkServerReady();
       }
     },
     sleep(s) {
