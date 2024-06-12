@@ -23,7 +23,7 @@
     <div id="suggested-inputs-container">
       <span v-for="(si, i) in suggestedInputs"
             :key="i"
-            :class="{'suggested-input-span':true, 'focus': si === inputText }"
+            :class="dynamicFontSize(si)"
             @click="setInputText(si)"
       >{{ si }}</span>
       <button @click="getSuggestedInputs">Get New Inputs</button>
@@ -74,10 +74,21 @@ export default {
         cls_type: this.clsType,
       });
       this.classification = res.data.result;
+    },
+
+    dynamicFontSize(si) {
+      return {
+        verySmall: si.length > 40,
+        small: si.length > 30 && si.length < 40,
+        regular: si.length > 20 && si.length < 30 ,
+        larger: si.length > 15 && si.length < 20,
+        extraLarge: si.length < 15,
+
+        ['suggested-input-span']: true,
+        focus: si === this.inputText,
+      }
     }
-
-
-  }
+  },
 };
 
 </script>
@@ -151,6 +162,26 @@ form {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #9be1ff;
+}
+
+.verySmall {
+  font-size: 12px;
+}
+
+.smaller {
+  font-size: 14px;
+}
+
+.regular {
+  font-size: 16px;
+}
+
+.larger{
+  font-size: 18px;
+}
+
+.extraLarge {
+  font-size: 20px;
 }
 
 button {
