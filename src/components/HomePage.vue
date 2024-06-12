@@ -26,6 +26,7 @@
             :class="{'suggested-input-span':true, 'focus': si === inputText }"
             @click="setInputText(si)"
       >{{ si }}</span>
+      <button @click="getSuggestedInputs">Get New Inputs</button>
     </div>
   </div>
 </template>
@@ -50,7 +51,7 @@ export default {
     async getSuggestedInputs() {
       try {
         const res = await axios.post('http://127.0.0.1:5000/generate_inputs', {
-          cls_type: 'spam',
+          cls_type: this.clsType,
           count: 4
         });
         this.suggestedInputs = res.data.inputs;
