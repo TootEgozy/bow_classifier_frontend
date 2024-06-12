@@ -1,5 +1,5 @@
 <template>
-  <div v-if="serverReady">App main page</div>
+  <div v-if="serverReady"><HomePage /></div>
   <div v-else><LoadingPage /></div>
 </template>
 
@@ -7,9 +7,10 @@
 
 import axios from "axios";
 import LoadingPage from "@/components/LoadingPage.vue";
+import HomePage from "@/components/HomePage.vue";
 
 export default {
-  components: {LoadingPage},
+  components: {HomePage, LoadingPage},
   data() {
     return {
       serverReady: false,
@@ -24,7 +25,6 @@ export default {
         const res = await axios.get('http://127.0.0.1:5000/server_ready');
         if(!res?.data?.server_ready) {
           await this.sleep(3);
-          console.log('not ready yet...');
           this.checkServerReady();
         } else {
           console.log('server ready!');
