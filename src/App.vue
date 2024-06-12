@@ -1,13 +1,15 @@
 <template>
   <div v-if="serverReady">App main page</div>
-  <div v-else>Loading...</div>
+  <div v-else><LoadingPage /></div>
 </template>
 
 <script>
 
 import axios from "axios";
+import LoadingPage from "@/components/LoadingPage.vue";
 
 export default {
+  components: {LoadingPage},
   data() {
     return {
       serverReady: false,
@@ -40,3 +42,15 @@ export default {
   }
 };
 </script>
+
+<style>
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevent scrolling */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+</style>
