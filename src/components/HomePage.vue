@@ -78,11 +78,11 @@ export default {
 
     dynamicFontSize(si) {
       return {
-        verySmall: si.length > 40,
-        small: si.length > 30 && si.length < 40,
-        regular: si.length > 20 && si.length < 30 ,
-        larger: si.length > 15 && si.length < 20,
-        extraLarge: si.length < 15,
+        verySmall: si.length > 70,
+        small: si.length > 50 && si.length < 70,
+        regular: si.length > 40 && si.length < 50 ,
+        larger: si.length > 20 && si.length < 40,
+        extraLarge: si.length < 20,
 
         ['suggested-input-span']: true,
         focus: si === this.inputText,
@@ -106,6 +106,7 @@ body {
 
 * {
   padding: 0.3vw;
+  overflow: hidden;
 }
 
 .container {
@@ -115,7 +116,7 @@ body {
   align-items: center;
   justify-content: flex-start;
   height: 85vh;
-  padding-top: 15vh;
+  padding-top: 5vh;
   background-color: lightcyan;
 }
 
@@ -152,36 +153,38 @@ form {
   grid-template-rows: repeat(2, 1fr);
   gap: 10px;
   width: 30vw;
+  height: 20vw;
 }
 
 .suggested-input-span {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1vw;
+  padding: 0.5vw 1vw;
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #9be1ff;
 }
 
 .verySmall {
-  font-size: 12px;
+  font-size: 1rem;
 }
 
 .smaller {
-  font-size: 14px;
+  font-size: 1.2rem;
 }
 
+
 .regular {
-  font-size: 16px;
+  font-size: 1.4rem;
 }
 
 .larger{
-  font-size: 18px;
+  font-size: 1.6rem;
 }
 
 .extraLarge {
-  font-size: 20px;
+  font-size: 1.8rem;
 }
 
 button {
