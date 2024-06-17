@@ -149,8 +149,8 @@ form {
 
 #suggested-inputs-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(1, 1fr);
   gap: 10px;
   width: 30vw;
   height: 20vw;
