@@ -1,7 +1,5 @@
 <template>
   <div class="page-container">
-    <nav> nav bar component placeholder</nav>
-
     <div class="header-container"> put the title and the explanation here </div>
 
     <div class="classifier-container">
@@ -57,19 +55,6 @@ export default {
       });
       this.classification = res.data.result;
     },
-
-    dynamicFontSize(si) {
-      return {
-        verySmall: si.length > 70,
-        small: si.length > 50 && si.length < 70,
-        regular: si.length > 40 && si.length < 50 ,
-        larger: si.length > 20 && si.length < 40,
-        extraLarge: si.length < 20,
-
-        ['suggested-input-span']: true,
-        focus: si === this.inputText,
-      }
-    }
   },
 };
 

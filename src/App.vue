@@ -1,5 +1,8 @@
 <template>
-  <div v-if="serverReady"><HomePage /></div>
+  <div v-if="serverReady">
+    <NavBar />
+    <HomePage />
+  </div>
   <div v-else><LoadingPage /></div>
 </template>
 
@@ -8,9 +11,12 @@
 import axios from "axios";
 import LoadingPage from "@/components/LoadingPage.vue";
 import HomePage from "@/components/HomePage.vue";
+import NavBar from "@/components/NavBar.vue";
 
 export default {
-  components: {HomePage, LoadingPage},
+  components: {
+    NavBar, HomePage, LoadingPage
+  },
   data() {
     return {
       serverReady: false,
