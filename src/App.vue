@@ -1,7 +1,7 @@
 <template>
   <div v-if="serverReady">
+    <router-view></router-view>
     <NavBar />
-    <HomePage />
   </div>
   <div v-else><LoadingPage /></div>
 </template>
@@ -10,12 +10,11 @@
 
 import axios from "axios";
 import LoadingPage from "@/components/LoadingPage.vue";
-import HomePage from "@/components/HomePage.vue";
 import NavBar from "@/components/NavBar.vue";
 
 export default {
   components: {
-    NavBar, HomePage, LoadingPage
+    NavBar, LoadingPage
   },
   data() {
     return {
@@ -50,6 +49,11 @@ export default {
 </script>
 
 <style>
+
+* {
+  font-family: 'Segoe UI', 'Tahoma', 'Geneva', sans-serif;
+}
+
 html, body {
   margin: 0;
   padding: 0;
@@ -58,5 +62,8 @@ html, body {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.navbar {
+  width: 100vw;
 }
 </style>

@@ -110,7 +110,6 @@ body {
 }
 
 .container {
-  font-family: 'Segoe UI', 'Tahoma', 'Geneva', sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -164,27 +163,6 @@ form {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #9be1ff;
-}
-
-.verySmall {
-  font-size: 1rem;
-}
-
-.smaller {
-  font-size: 1.2rem;
-}
-
-
-.regular {
-  font-size: 1.4rem;
-}
-
-.larger{
-  font-size: 1.6rem;
-}
-
-.extraLarge {
-  font-size: 1.8rem;
 }
 
 button {

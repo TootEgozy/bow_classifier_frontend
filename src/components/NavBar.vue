@@ -1,7 +1,6 @@
 <template>
   <nav class="navbar">
     <div class="container">
-      <h1 class="logo">MyApp</h1>
       <ul class="nav-links">
         <li v-for="link in links" :key="link.text">
           <router-link :to="link.url">{{ link.text }}</router-link>
@@ -31,6 +30,7 @@ export default {
   background-color: #333;
   color: white;
   padding: 1rem;
+  margin-top: 0px;
 }
 
 .container {
