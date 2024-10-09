@@ -1,7 +1,7 @@
 <template>
   <div v-if="serverReady">
-    <router-view></router-view>
     <NavBar />
+    <router-view></router-view>
   </div>
   <div v-else><LoadingPage /></div>
 </template>
@@ -48,20 +48,23 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 
 * {
   font-family: 'Segoe UI', 'Tahoma', 'Geneva', sans-serif;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 html, body {
   margin: 0;
   padding: 0;
-  height: 100%;
+  height: 100vh;
   overflow: hidden; /* Prevent scrolling */
   display: flex;
   align-items: center;
   justify-content: center;
+  box-sizing: border-box;
 }
 .navbar {
   width: 100vw;

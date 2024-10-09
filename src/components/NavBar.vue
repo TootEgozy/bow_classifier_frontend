@@ -15,7 +15,7 @@ export default {
   name: 'NavBar',
   setup() {
     const links = [
-      { text: 'Home', url: '/' },
+      { text: 'Classifier', url: '/' },
       { text: 'About', url: '/about' },
       { text: 'Contact', url: '/contact' },
     ];
@@ -29,8 +29,9 @@ export default {
 .navbar {
   background-color: #333;
   color: white;
-  padding: 1rem;
+  padding: 0.2rem;
   margin-top: 0px;
+  box-sizing: border-box;
 }
 
 .container {
@@ -42,7 +43,8 @@ export default {
 .nav-links {
   list-style: none;
   display: flex;
-  gap: 1rem;
+  gap: 6vw;
+  font-size: 1.3rem;
 }
 
 .nav-links li {

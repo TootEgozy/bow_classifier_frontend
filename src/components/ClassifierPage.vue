@@ -1,9 +1,13 @@
 <template>
   <div class="page-container">
-    <div class="header-container"> put the title and the explanation here </div>
+
+    <div class="header-container">
+      <h1>Classifier</h1>
+      <h3>Select a category (spam or sentiment), input your text and press "classify"</h3>
+    </div>
 
     <div class="classifier-container">
-      <div> classifier component placeholder</div>
+      <ClassifierComponent />
     </div>
 
     <div> a placeholder for a footer of "all rights are reserved to..."</div>
@@ -13,49 +17,12 @@
 
 <script>
 
-import axios from "axios";
+import ClassifierComponent from "@/components/ClassifierComponent.vue";
 
 export default {
-  data() {
-    return {
-      suggestedInputs: [],
-      inputText: '',
-      clsType: 'spam',
-      classification: null,
-    };
-  },
-  mounted() {
-    this.getSuggestedInputs();
-  },
-  methods: {
-    async getSuggestedInputs() {
-      try {
-        const res = await axios.post('http://127.0.0.1:5000/generate_inputs', {
-          cls_type: this.clsType,
-          count: 4
-        });
-        this.suggestedInputs = res.data.inputs;
-      } catch (e) {
-        console.error('error getting inputs from server: '+e)
-      }
-    },
-
-    clearInput() {
-      this.inputText = "";
-    },
-
-    setInputText(text) {
-      this.inputText = text;
-    },
-
-    async handleSubmit() {
-      const res = await axios.post('http://127.0.0.1:5000/classify', {
-        input_text: this.inputText,
-        cls_type: this.clsType,
-      });
-      this.classification = res.data.result;
-    },
-  },
+  components: {
+    ClassifierComponent,
+  }
 };
 
 </script>

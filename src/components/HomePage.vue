@@ -94,6 +94,9 @@ export default {
 </script>
 
 <style scoped>
+html {
+  overflow: hidden;
+}
 body {
   margin: 0;
   padding: 0;
