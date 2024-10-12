@@ -48,7 +48,7 @@ export default {
 };
 </script>
 
-<style scoped>
+<style>
 
 * {
   font-family: 'Segoe UI', 'Tahoma', 'Geneva', sans-serif;
@@ -56,17 +56,4 @@ export default {
   box-sizing: border-box;
 }
 
-html, body {
-  margin: 0;
-  padding: 0;
-  height: 100vh;
-  overflow: hidden; /* Prevent scrolling */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-}
-.navbar {
-  width: 100vw;
-}
 </style>

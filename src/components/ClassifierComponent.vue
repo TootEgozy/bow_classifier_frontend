@@ -71,4 +71,21 @@ export default {
 
 <style scoped>
 
+.textarea-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+#input_text {
+  height: 5rem;
+  width: 40rem;
+  resize: none;
+}
+
+.clear-text-btn {
+  align-self: flex-end;
+}
+
 </style>

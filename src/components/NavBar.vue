@@ -30,8 +30,11 @@ export default {
   background-color: #333;
   color: white;
   padding: 0.2rem;
-  margin-top: 0px;
+  position: fixed;
+  top: 0;
+  left: 0;
   box-sizing: border-box;
+  width: 100vw;
 }
 
 .container {

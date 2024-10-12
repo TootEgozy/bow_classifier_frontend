@@ -1,16 +1,20 @@
 <template>
   <div class="page-container">
 
-    <div class="header-container">
-      <h1>Classifier</h1>
-      <h3>Select a category (spam or sentiment), input your text and press "classify"</h3>
-    </div>
+    <div class="content-container">
 
-    <div class="classifier-container">
-      <ClassifierComponent />
-    </div>
+      <div class="header-container">
+        <h1>Classifier</h1>
+        <h3>Select a category (spam or sentiment), input your text and press "classify"</h3>
+      </div>
 
-    <div> a placeholder for a footer of "all rights are reserved to..."</div>
+      <div class="classifier-container">
+        <ClassifierComponent />
+      </div>
+
+      <div> a placeholder for a footer of "all rights are reserved to..."</div>
+
+    </div>
 
   </div>
 </template>
@@ -28,19 +32,18 @@ export default {
 </script>
 
 <style scoped>
-body {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  min-height: 100vh;
-}
 
 * {
   padding: 0.3vw;
   overflow: hidden;
+}
+
+.page-container {
+  display: flex;
+  align-items: center;
+  justify-content: left;
+  flex-direction: column;
+  margin-top: 5rem;
 }
 
 .container {

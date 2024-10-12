@@ -1,12 +1,25 @@
 <template>
-  <div class="loading_container">
-    <span class="loading_msg">Training model</span>
-    <div class="loader"></div>
-    <span class="loading_msg">This process takes up to one minute to complete</span>
+  <div class="loading-page-container">
+    <div class="loading_container">
+      <span class="loading_msg">Training model</span>
+      <div class="loader"></div>
+      <span class="loading_msg">This process takes up to one minute to complete</span>
+    </div>
   </div>
 </template>
 
 <style scoped>
+
+.loading-page-container {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+}
 
 .loading_msg {
   margin: 1vh;
