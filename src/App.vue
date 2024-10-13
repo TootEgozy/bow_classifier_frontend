@@ -9,8 +9,8 @@
 <script>
 
 import axios from "axios";
-import LoadingPage from "@/components/LoadingPage.vue";
-import NavBar from "@/components/NavBar.vue";
+import LoadingPage from "@/components/pages/LoadingPage.vue";
+import NavBar from "@/components/sub-components/NavBar.vue";
 
 export default {
   components: {

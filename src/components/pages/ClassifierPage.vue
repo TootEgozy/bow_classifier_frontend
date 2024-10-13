@@ -21,7 +21,7 @@
 
 <script>
 
-import ClassifierComponent from "@/components/ClassifierComponent.vue";
+import ClassifierComponent from "@/components/sub-components/ClassifierComponent.vue";
 
 export default {
   components: {

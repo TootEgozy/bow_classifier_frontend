@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import ClassifierPage from '../components/ClassifierPage.vue';
-import AboutPage from '../components/AboutPage.vue';
+import ClassifierPage from '../components/pages/ClassifierPage.vue';
+import AboutPage from '../components/pages/AboutPage.vue';
 
 const routes = [
     { path: '/', component: ClassifierPage },
