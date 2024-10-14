@@ -2,8 +2,22 @@
   <div class="classifier-container">
 
     <div class="tabs-container">
-      <button id="spam-tab" @click="clsType='spam'">detect spam</button>
-      <button id="sentiment-tab" @click="clsType='sentiment'">detect sentiment</button>
+      <button
+          id="spam-tab"
+          @click="clsType='spam'"
+          class="tab-btn"
+          :class="clsType === 'spam' ? 'selected-tab' : 'unselected-tab'"
+      >
+        detect spam
+      </button>
+      <button
+          id="sentiment-tab"
+          @click="clsType='sentiment'"
+          class="tab-btn"
+          :class="clsType === 'sentiment' ? 'selected-tab' : 'unselected-tab'"
+      >
+        detect sentiment
+      </button>
     </div>
 
     <form @submit.prevent="handleSubmit">
@@ -71,6 +85,30 @@ export default {
 
 <style scoped>
 
+.tab-btn {
+  background-color: white;
+  border: none;
+  padding: 5px 10px;
+  margin-bottom: -1px;
+  margin-right: -1px;
+  border-radius: 0px;
+}
+
+.tab-btn:hover {
+  background-color: white;
+}
+
+.selected-tab {
+  background-color: white;
+  background: linear-gradient( red , blue);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+}
+
+.unselected-tab {
+  background-color: lightgray;
+}
+
 .textarea-container {
   display: flex;
   justify-content: center;
@@ -80,8 +118,11 @@ export default {
 
 #input_text {
   height: 5rem;
-  width: 40rem;
+  width: 42rem;
   resize: none;
+  border: 1px solid darkgray;
+  border-radius: 0px 5px 5px 5px;
+  padding: 10px;
 }
 
 .clear-text-btn {

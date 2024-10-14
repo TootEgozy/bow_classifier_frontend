@@ -12,6 +12,10 @@
         <ClassifierComponent />
       </div>
 
+      <div class="suggestion-list-container">
+        <inputSuggestionList title="Suggestions" items="['number 1', 'number 2']" />
+      </div>
+
       <div> a placeholder for a footer of "all rights are reserved to..."</div>
 
     </div>
@@ -22,10 +26,11 @@
 <script>
 
 import ClassifierComponent from "@/components/sub-components/ClassifierComponent.vue";
+import InputSuggestionList from "@/components/sub-components/InputSuggestionList.vue";
 
 export default {
   components: {
-    ClassifierComponent,
+    ClassifierComponent, InputSuggestionList,
   }
 };
 
@@ -46,14 +51,8 @@ export default {
   margin-top: 5rem;
 }
 
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  height: 85vh;
-  padding-top: 5vh;
-  background-color: lightcyan;
+.content-container {
+  background-color: whitesmoke;
 }
 
 form {
