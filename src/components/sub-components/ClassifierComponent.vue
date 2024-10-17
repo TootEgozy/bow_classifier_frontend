@@ -27,6 +27,14 @@
         <button class="clear-text-btn" @click="clearInput">clear</button>
       </div>
 
+      <div class="suggestion-list-container">
+        <inputSuggestionList
+            title="Suggestions"
+            :items="suggestedInputs"
+            @input-selected="updateInputText"
+        />
+      </div>
+
     </form>
 
 
@@ -36,8 +44,12 @@
 <script>
 
 import axios from "axios";
+import InputSuggestionList from "@/components/sub-components/InputSuggestionList.vue";
 
 export default {
+  components: {
+    InputSuggestionList
+  },
   data() {
     return {
       suggestedInputs: [],
@@ -70,6 +82,10 @@ export default {
 
     setInputText(text) {
       this.inputText = text;
+    },
+
+    updateInputText(selectedInput) {
+      this.inputText = selectedInput;
     },
 
     async handleSubmit() {
@@ -128,5 +144,6 @@ export default {
 .clear-text-btn {
   align-self: flex-end;
 }
+
 
 </style>
