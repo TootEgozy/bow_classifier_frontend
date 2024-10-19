@@ -47,6 +47,7 @@ export default {
 
 .content-container {
   background-color: whitesmoke;
+  padding: 1rem;
 }
 
 form {

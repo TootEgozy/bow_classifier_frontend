@@ -32,7 +32,15 @@
             title="Suggestions"
             :items="suggestedInputs"
             @input-selected="updateInputText"
+            @refresh-inputs="getSuggestedInputs"
         />
+      </div>
+
+      <button type="submit" class="submit-btn">Classify</button>
+
+      <div class="result-container" v-if="classification">
+        <span> Classification: </span>
+        <span> {{classification}} </span>
       </div>
 
     </form>
@@ -68,7 +76,7 @@ export default {
       try {
         const res = await axios.post('http://127.0.0.1:5000/generate_inputs', {
           cls_type: this.clsType,
-          count: 4
+          count: 3
         });
         this.suggestedInputs = res.data.inputs;
       } catch (e) {
@@ -143,6 +151,31 @@ export default {
 
 .clear-text-btn {
   align-self: flex-end;
+  margin-left: 5px ;
+}
+
+.submit-btn {
+  margin-top: 2rem;
+  padding: 5px 10px;
+  margin-right: -1px;
+  border-radius: 2px;
+  border: 2px solid lightgray;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.submit-btn:hover {
+  background-color: lightgray;
+}
+
+.result-container {
+  margin: 2rem 0rem 2rem 0rem;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 5px 10px 5px 10px;
+  background-color: white;
+  border-radius: 5px;
+  border: 1px solid lightgray;
 }
 
 

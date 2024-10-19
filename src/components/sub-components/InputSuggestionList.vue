@@ -20,7 +20,8 @@
 
     </div>
     <transition name="fade">
-      <div v-if="isOpen">
+      <div v-if="isOpen" class="collapsable-list-content">
+
         <ul class="list">
           <li
               v-for="(item, index) in items"
@@ -30,7 +31,16 @@
             {{ item }}
           </li>
         </ul>
-        <button class="refresh-inputs-btn" @click="console.log('')">refresh</button>
+
+        <div class="refresh-btn-container">
+          <button
+              class="refresh-inputs-btn"
+              @click="refreshInputs"
+          >
+            refresh
+          </button>
+        </div>
+
       </div>
     </transition>
   </div>
@@ -62,7 +72,10 @@ export default {
     select(event) {
       this.selectedInput = event.target.innerHTML;
       this.$emit('input-selected', this.selectedInput);
-    }
+    },
+    refreshInputs() {
+      this.$emit('refresh-inputs');
+    },
   },
 };
 </script>
@@ -72,26 +85,29 @@ export default {
 * {
   overflow: hidden;
   box-sizing: border-box;
+  font-size: 0.8rem;
 }
 
 .collapsible-list {
   margin-top: 10px;
-  background-color: #dfdbe7;
   border-radius: 5px;
-  border: 1px solid gray;
+  border: 1px solid lightgray;
+}
+
+.collapsable-list-content {
+  padding: 0.5rem;
 }
 
 .list-header {
   display: flex;
   justify-content: space-between;
-  padding: 10px;
+  padding: 5px;
   cursor: pointer;
-  border: 1px solid darkgray;
   border-radius: 5px;
 }
 
 .list-header:hover {
-  background-color: #f1f0f5;
+  background-color: lightgray;
 }
 
 .list {
@@ -102,7 +118,7 @@ export default {
 }
 
 .list li {
-  padding: 8px 10px;
+  padding: 0.3rem;
   border-top: 1px solid #eee;
 }
 
@@ -122,5 +138,13 @@ export default {
   width: 0.8rem;
   display: inline-block;
   vertical-align: middle;
+}
+
+.refresh-btn-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.refresh-inputs-btn {
 }
 </style>
