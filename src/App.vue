@@ -27,7 +27,8 @@ export default {
   methods: {
     async checkServerReady() {
       try {
-        const res = await axios.get('http://127.0.0.1:5000/server_ready');
+        const serverAddress = process.env.SERVER_ADDRESS;
+        const res = await axios.get(`${serverAddress}/server_ready`);
         if(!res?.data?.server_ready) {
           await this.sleep(3);
           this.checkServerReady();

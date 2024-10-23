@@ -64,6 +64,7 @@ export default {
       inputText: '',
       clsType: 'spam',
       classification: null,
+      serverAddress: process.env.SERVER_ADDRESS,
     };
   },
 
@@ -74,7 +75,7 @@ export default {
   methods: {
     async getSuggestedInputs() {
       try {
-        const res = await axios.post('http://127.0.0.1:5000/generate_inputs', {
+        const res = await axios.post(`${this.serverAddress}/generate_inputs`, {
           cls_type: this.clsType,
           count: 3
         });
@@ -97,12 +98,17 @@ export default {
     },
 
     async handleSubmit() {
-      const res = await axios.post('http://127.0.0.1:5000/classify', {
+      const res = await axios.post(`${this.serverAddress}/classify`, {
         input_text: this.inputText,
         cls_type: this.clsType,
       });
       this.classification = res.data.result;
     },
+  },
+  watch: {
+    clsType() {
+      this.getSuggestedInputs();
+    }
   },
 };
 </script>
