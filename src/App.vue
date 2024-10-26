@@ -27,17 +27,16 @@ export default {
   methods: {
     async checkServerReady() {
       try {
-        const serverAddress = process.env.SERVER_ADDRESS;
+        const serverAddress = process.env.VUE_APP_SERVER_ADDRESS;
         const res = await axios.get(`${serverAddress}/server_ready`);
         if(!res?.data?.server_ready) {
           await this.sleep(3);
           this.checkServerReady();
         } else {
-          console.log('server ready!');
           this.serverReady = true;
         }
       } catch (e) {
-        if(e.message === "Network Error") console.log('Waiting for server');
+        if(e.message === "Network Error") console.error('Error connecting to server');
         await this.sleep(3);
         this.checkServerReady();
       }

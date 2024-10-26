@@ -64,7 +64,7 @@ export default {
       inputText: '',
       clsType: 'spam',
       classification: null,
-      serverAddress: process.env.SERVER_ADDRESS,
+      serverAddress: process.env.VUE_APP_SERVER_ADDRESS,
     };
   },
 
