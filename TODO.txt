@@ -1,0 +1,13 @@
+1. handle getting the 429 "too many requests" error response from server.
+2. handle server restarting when an issue occurs.
+3. improve the design: better shapes and fonts.
+4. improve the design: floating texts on hover for the suggestions box.
+5. improve the design: changing colors.
+6. add feature: dark / light mode.
+7. save user preferences in local storage.
+8. add loading icon while fetching new suggestions.
+9. add loading icon while fetching the classification.
+10. write an explanation for why the classifications are sometimes wrong (bad data files).
+11. write the about page - explain why I created the app,
+what could be the possible benefits and risks of using this filtering method on user comments, and how this works.
+12. create a nice contact page with my github and linkedin.
