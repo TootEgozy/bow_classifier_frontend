@@ -28,8 +28,8 @@ export default {
     async checkServerReady() {
       try {
         const serverAddress = process.env.VUE_APP_SERVER_ADDRESS;
-        const res = await axios.get(`${serverAddress}/server_ready`);
-        if(!res?.data?.server_ready) {
+        const res = await axios.get(`${serverAddress}/server_ready`, {params: { cls_type: "spam" }});
+        if(!res?.status == 204) {
           await this.sleep(3);
           this.checkServerReady();
         } else {

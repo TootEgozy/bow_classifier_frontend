@@ -75,10 +75,7 @@ export default {
   methods: {
     async getSuggestedInputs() {
       try {
-        const res = await axios.post(`${this.serverAddress}/generate_inputs`, {
-          cls_type: this.clsType,
-          count: 3
-        });
+        const res = await axios.post(`${this.serverAddress}/generate_inputs`,{count: 3}, {params: { cls_type: this.clsType }});
         this.suggestedInputs = res.data.inputs;
       } catch (e) {
         console.error('error getting inputs from server: '+e)
@@ -98,10 +95,7 @@ export default {
     },
 
     async handleSubmit() {
-      const res = await axios.post(`${this.serverAddress}/classify`, {
-        input_text: this.inputText,
-        cls_type: this.clsType,
-      });
+      const res = await axios.post(`${this.serverAddress}/classify`, {input_text: this.inputText}, {params: {cls_type: this.clsType}});
       this.classification = res.data.result;
     },
   },
