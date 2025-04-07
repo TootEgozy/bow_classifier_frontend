@@ -28,12 +28,16 @@
       </div>
 
       <div class="suggestion-list-container">
-        <inputSuggestionList
-            title="Suggestions"
-            :items="suggestedInputs"
-            @input-selected="updateInputText"
-            @refresh-inputs="getSuggestedInputs"
-        />
+        <div v-if="server_ready">
+          <inputSuggestionList
+              title="Suggestions"
+              :items="suggestedInputs"
+              @input-selected="updateInputText"
+              @refresh-inputs="getSuggestedInputs"
+          />
+        </div>
+        <div v-else>hello!</div>
+
       </div>
 
       <button type="submit" class="submit-btn">Classify</button>
@@ -63,6 +67,7 @@ export default {
       suggestedInputs: [],
       inputText: '',
       clsType: 'spam',
+      server_ready: true,
       classification: null,
       serverAddress: process.env.VUE_APP_SERVER_ADDRESS,
     };
