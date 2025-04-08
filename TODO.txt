@@ -1,4 +1,4 @@
-1. handle getting the 429 "too many requests" error response from server.
+1. handle getting the requests blocked error from server.
 2. handle server restarting when an issue occurs.
 3. improve the design: better shapes and fonts.
 4. improve the design: floating texts on hover for the suggestions box.
