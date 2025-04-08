@@ -28,7 +28,7 @@
       </div>
 
       <div class="suggestion-list-container">
-        <div v-if="server_ready">
+        <div v-if="serverReady">
           <inputSuggestionList
               title="Suggestions"
               :items="suggestedInputs"
@@ -57,6 +57,7 @@
 
 import axios from "axios";
 import InputSuggestionList from "@/components/sub-components/InputSuggestionList.vue";
+import checkServerReady from "@/utils/checkServerReady";
 
 export default {
   components: {
@@ -67,7 +68,7 @@ export default {
       suggestedInputs: [],
       inputText: '',
       clsType: 'spam',
-      server_ready: true,
+      serverReady: true,
       classification: null,
       serverAddress: process.env.VUE_APP_SERVER_ADDRESS,
     };
@@ -83,8 +84,12 @@ export default {
         const res = await axios.post(`${this.serverAddress}/generate_inputs`,{count: 3}, {params: { cls_type: this.clsType }});
         this.suggestedInputs = res.data.inputs;
       } catch (e) {
-        console.error('error getting inputs from server: '+e)
+        console.error('error getting inputs from server: '+e);
       }
+    },
+
+    updateServerReady() {
+      this.serverReady = true;
     },
 
     clearInput() {
@@ -105,8 +110,11 @@ export default {
     },
   },
   watch: {
-    clsType() {
-      this.getSuggestedInputs();
+    async clsType() {
+      this.serverReady = false;
+      this.suggestedInputs = [];
+      await checkServerReady(this.clsType, this.serverAddress, this.updateServerReady);
+      await this.getSuggestedInputs();
     }
   },
 };
