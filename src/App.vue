@@ -8,9 +8,9 @@
 
 <script>
 
-import axios from "axios";
 import LoadingPage from "@/components/pages/LoadingPage.vue";
 import NavBar from "@/components/sub-components/NavBar.vue";
+import checkServerReady from "@/utils/checkServerReady";
 
 export default {
   components: {
@@ -19,31 +19,16 @@ export default {
   data() {
     return {
       serverReady: false,
+      serverAddress: process.env.VUE_APP_SERVER_ADDRESS,
     };
   },
   mounted() {
-    this.checkServerReady();
+    checkServerReady("spam", this.serverAddress, this.updateServerReady);
   },
   methods: {
-    async checkServerReady() {
-      try {
-        const serverAddress = process.env.VUE_APP_SERVER_ADDRESS;
-        const res = await axios.get(`${serverAddress}/server_ready`, {params: { cls_type: "spam" }});
-        if(!res?.status == 204) {
-          await this.sleep(3);
-          this.checkServerReady();
-        } else {
-          this.serverReady = true;
-        }
-      } catch (e) {
-        if(e.message === "Network Error") console.error('Error connecting to server');
-        await this.sleep(3);
-        this.checkServerReady();
-      }
+    updateServerReady() {
+      this.serverReady = true;
     },
-    sleep(s) {
-      return new Promise(resolve => setTimeout(resolve, s * 1000));
-    }
   }
 };
 </script>
