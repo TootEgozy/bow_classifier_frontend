@@ -28,16 +28,12 @@
       </div>
 
       <div class="suggestion-list-container">
-        <div v-if="serverReady">
-          <inputSuggestionList
-              title="Suggestions"
-              :items="suggestedInputs"
-              @input-selected="updateInputText"
-              @refresh-inputs="getSuggestedInputs"
-          />
-        </div>
-        <div v-else>hello!</div>
-
+        <inputSuggestionList
+            title="Suggestions"
+            :items="suggestedInputs"
+            @input-selected="updateInputText"
+            @refresh-inputs="getSuggestedInputs"
+        />
       </div>
 
       <button type="submit" class="submit-btn">Classify</button>
@@ -88,16 +84,21 @@ export default {
       }
     },
 
+    waitForDataChange(component, key) {
+      return new Promise((resolve) => {
+        const unwatch = component.$watch(key, (newVal) => {
+          unwatch(); // Stop watching after first change
+          resolve(newVal);
+        });
+      });
+    },
+
     updateServerReady() {
       this.serverReady = true;
     },
 
     clearInput() {
       this.inputText = "";
-    },
-
-    setInputText(text) {
-      this.inputText = text;
     },
 
     updateInputText(selectedInput) {
@@ -113,7 +114,8 @@ export default {
     async clsType() {
       this.serverReady = false;
       this.suggestedInputs = [];
-      await checkServerReady(this.clsType, this.serverAddress, this.updateServerReady);
+      checkServerReady(this.clsType, this.serverAddress, this.updateServerReady);
+      await this.waitForDataChange(this, "serverReady");
       await this.getSuggestedInputs();
     }
   },
