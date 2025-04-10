@@ -22,7 +22,7 @@
     <transition name="fade">
       <div v-if="isOpen" class="collapsable-list-content">
 
-        <ul class="list">
+        <ul v-if="items.length > 0" class="list">
           <li
               v-for="(item, index) in items"
               :key="index"
@@ -31,6 +31,9 @@
             {{ item }}
           </li>
         </ul>
+        <div v-else>
+          <SmallLoading/>
+        </div>
 
         <div class="refresh-btn-container">
           <button
@@ -47,8 +50,11 @@
 </template>
 
 <script>
+import SmallLoading from "@/components/sub-components/SmallLoading.vue";
+
 export default {
   name: 'InputSuggestionList',
+  components: {SmallLoading},
   data() {
     return {
       isOpen: false,
