@@ -36,7 +36,11 @@
         />
       </div>
 
-      <button type="submit" class="submit-btn">Classify</button>
+      <div v-if="serverReady">
+        <button type="submit" class="submit-btn">Classify</button>
+      </div>
+      <div v-else>loading data</div>
+
 
       <div class="result-container" v-if="classification">
         <span> Classification: </span>
@@ -112,6 +116,7 @@ export default {
   },
   watch: {
     async clsType() {
+      console.log("cls type has changed")
       this.serverReady = false;
       this.suggestedInputs = [];
       checkServerReady(this.clsType, this.serverAddress, this.updateServerReady);
