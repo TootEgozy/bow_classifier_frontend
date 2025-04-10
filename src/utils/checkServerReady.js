@@ -10,9 +10,13 @@ async function checkServerReady(clsType, serverAddress, resolver) {
             resolver(true);
         }
     } catch (e) {
-        if(e.message === "Network Error") console.error('Error connecting to server');
-        await sleep(3);
-        checkServerReady(clsType, serverAddress, resolver);
+        if(e.response?.status === 503) {
+            await sleep(3);
+            checkServerReady(clsType, serverAddress, resolver);
+        } else {
+            console.error(e);
+        }
+
     }
 }
 

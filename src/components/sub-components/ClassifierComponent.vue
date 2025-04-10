@@ -1,7 +1,17 @@
 <template>
   <div class="classifier-container">
 
+    <div class="suggestion-list-container">
+      <inputSuggestionList
+          title="Suggestions"
+          :items="suggestedInputs"
+          @input-selected="updateInputText"
+          @refresh-inputs="getSuggestedInputs"
+      />
+    </div>
+
     <div class="tabs-container">
+      <span class="tab-btn"> Modes:</span>
       <button
           id="spam-tab"
           @click="clsType='spam'"
@@ -25,15 +35,6 @@
       <div class="textarea-container">
         <textarea id="input_text" name="input_text" v-model="inputText" required></textarea>
         <button class="clear-text-btn" @click="clearInput">clear</button>
-      </div>
-
-      <div class="suggestion-list-container">
-        <inputSuggestionList
-            title="Suggestions"
-            :items="suggestedInputs"
-            @input-selected="updateInputText"
-            @refresh-inputs="getSuggestedInputs"
-        />
       </div>
 
       <div v-if="serverReady">
@@ -116,7 +117,6 @@ export default {
   },
   watch: {
     async clsType() {
-      console.log("cls type has changed")
       this.serverReady = false;
       this.suggestedInputs = [];
       checkServerReady(this.clsType, this.serverAddress, this.updateServerReady);
