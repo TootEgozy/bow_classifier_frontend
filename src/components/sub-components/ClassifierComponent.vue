@@ -153,6 +153,10 @@ export default {
   background-color: lightgray;
 }
 
+.suggestion-list-container {
+  margin-bottom: 2rem;
+}
+
 .textarea-container {
   display: flex;
   justify-content: center;

@@ -36,15 +36,17 @@
         </div>
 
         <div class="refresh-btn-container">
-          <button
+          <img
               class="refresh-inputs-btn"
               @click="refreshInputs"
+              src="../../assets/images/reload-icon.svg"
+              alt="refresh"
           >
-            refresh
-          </button>
         </div>
 
       </div>
+
+
     </transition>
   </div>
 </template>
@@ -139,6 +141,17 @@ export default {
   opacity: 0;
 }
 
+.refresh-inputs-btn {
+  height: 1.2rem;
+  width: 1.2rem;
+  opacity: 50%;
+}
+
+.refresh-inputs-btn:hover {
+  opacity: 1;
+  transition: opacity 0.5s;
+}
+
 .arrow-icon {
   height: 0.8rem;
   width: 0.8rem;
@@ -151,6 +164,5 @@ export default {
   justify-content: flex-end;
 }
 
-.refresh-inputs-btn {
-}
+
 </style>
