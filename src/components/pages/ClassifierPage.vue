@@ -4,7 +4,7 @@
     <div class="content-container">
 
       <div class="header-container">
-        <h1>Classifier</h1>
+        <h1 class="heading">Classifier</h1>
         <h3>Select a category (spam or sentiment), input your text and press "classify"</h3>
       </div>
 
@@ -48,6 +48,19 @@ export default {
 .content-container {
   background-color: whitesmoke;
   padding: 1rem;
+}
+
+@keyframes moveLeft {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.heading {
+
 }
 
 form {

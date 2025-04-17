@@ -11,14 +11,14 @@
     </div>
 
     <div class="tabs-container">
-      <span class="tab-btn"> Modes:</span>
+      <span class="detect-label"> Detect:</span>
       <button
           id="spam-tab"
           @click="clsType='spam'"
           class="tab-btn"
           :class="clsType === 'spam' ? 'selected-tab' : 'unselected-tab'"
       >
-        detect spam
+        Spam
       </button>
       <button
           id="sentiment-tab"
@@ -26,7 +26,7 @@
           class="tab-btn"
           :class="clsType === 'sentiment' ? 'selected-tab' : 'unselected-tab'"
       >
-        detect sentiment
+        Sentiment
       </button>
     </div>
 
@@ -111,6 +111,7 @@ export default {
     },
 
     async handleSubmit() {
+      this.classification = null;
       const res = await axios.post(`${this.serverAddress}/classify`, {input_text: this.inputText}, {params: {cls_type: this.clsType}});
       this.classification = res.data.result;
     },
@@ -129,28 +130,46 @@ export default {
 
 <style scoped>
 
+.detect-label {
+  margin-right: 0.5rem;
+}
+
 .tab-btn {
-  background-color: white;
   border: none;
-  padding: 5px 10px;
-  margin-bottom: -1px;
-  margin-right: -1px;
-  border-radius: 0px;
+  margin: 0.5rem;
+  padding: 0.4rem;
+  background-color: transparent;
+  font-size: 1rem;
 }
 
 .tab-btn:hover {
   background-color: white;
+  transition: 0.2s ease-in-out;
+}
+
+@keyframes moveLeft {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: +100% 0;
+  }
 }
 
 .selected-tab {
-  background-color: white;
-  background: linear-gradient( red , blue);
-  -webkit-text-fill-color: transparent;
+  background: url("../../assets/images/purple-text-background.jpg") repeat;
+  background-size: auto;
+  color: #de466c;
   -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: moveLeft 10s linear infinite;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
 
+
 .unselected-tab {
-  background-color: lightgray;
+  /*
+  background-color: lightgray; */
 }
 
 .suggestion-list-container {

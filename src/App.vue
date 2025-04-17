@@ -41,4 +41,11 @@ export default {
   box-sizing: border-box;
 }
 
+body {
+  height: 100vh;
+  background-image: url("./assets/images/background-img.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 </style>
