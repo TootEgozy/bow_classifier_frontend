@@ -43,7 +43,7 @@ export default {
 
 body {
   height: 100vh;
-  background-image: url("./assets/images/background-img.jpg");
+  background-image: url("./assets/images/background-img.svg");
   background-repeat: no-repeat;
   background-size: cover;
 }

@@ -157,7 +157,7 @@ export default {
 }
 
 .selected-tab {
-  background: url("../../assets/images/purple-text-background.jpg") repeat;
+  background: url("../../assets/images/text-background.jpg") repeat;
   background-size: auto;
   color: #de466c;
   -webkit-background-clip: text;

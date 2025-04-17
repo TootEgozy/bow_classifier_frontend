@@ -46,8 +46,10 @@ export default {
 }
 
 .content-container {
-  background-color: whitesmoke;
+  background-color: rgba(210, 210, 210, 0.5);
   padding: 1rem;
+  height: 80vh;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
 
 @keyframes moveLeft {
