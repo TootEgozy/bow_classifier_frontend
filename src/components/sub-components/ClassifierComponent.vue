@@ -130,6 +130,10 @@ export default {
 
 <style scoped>
 
+* {
+  overflow: visible;
+}
+
 .detect-label {
   margin-right: 0.5rem;
 }
@@ -143,7 +147,7 @@ export default {
 }
 
 .tab-btn:hover {
-  background-color: white;
+  background-color: #eef4f3;
   transition: 0.2s ease-in-out;
 }
 
@@ -163,6 +167,7 @@ export default {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: moveLeft 10s linear infinite;
+  border: 1px solid lightgray;
   box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
 
@@ -202,13 +207,29 @@ export default {
   padding: 5px 10px;
   margin-right: -1px;
   border-radius: 2px;
-  border: 2px solid lightgray;
+  border: 1px solid lightgray;
+  background-color: inherit;
   font-size: 1.1rem;
   font-weight: bold;
+  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
 }
 
 .submit-btn:hover {
-  background-color: lightgray;
+  background-color: #f9fbfb;
+  /*
+  transition: 0.2s ease-in-out;
+  box-shadow: rgba(255, 255, 255, 0.8) 0 0 2rem 1rem;
+   */
+  z-index: 2;
+  position: absolute;
+  background: url("../../assets/images/text-background.jpg") repeat;
+  background-size: auto;
+  color: #de466c;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: moveLeft 10s linear infinite;
+
+
 }
 
 .result-container {

@@ -115,7 +115,7 @@ export default {
 }
 
 .list-header:hover {
-  background-color: lightgray;
+  background-color: #eef4f3;
 }
 
 .list {
@@ -131,7 +131,7 @@ export default {
 }
 
 .list li:hover {
-  background-color: #f1f0f5 ;
+  background-color: #eef4f3;
 }
 
 .fade-enter-active, .fade-leave-active {
