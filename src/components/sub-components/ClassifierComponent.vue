@@ -1,4 +1,8 @@
 <template>
+  <head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+
   <div class="classifier-container">
 
     <div class="suggestion-list-container">
@@ -33,8 +37,12 @@
     <form @submit.prevent="handleSubmit">
 
       <div class="textarea-container">
-        <textarea id="input_text" name="input_text" v-model="inputText" required></textarea>
-        <button class="clear-text-btn" @click="clearInput">clear</button>
+        <div class="textarea-wrapper">
+          <textarea id="input_text" v-model="inputText" required></textarea>
+          <div class="clear-text-btn" @click="clearInput">
+            <i class="fa fa-trash-o"></i>
+          </div>
+        </div>
       </div>
 
       <div v-if="serverReady">
@@ -168,19 +176,12 @@ export default {
   -webkit-text-fill-color: transparent;
   animation: moveLeft 10s linear infinite;
   border: 1px solid lightgray;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
-}
-
-
-.unselected-tab {
-  /*
-  background-color: lightgray; */
+  box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
 }
 
 .suggestion-list-container {
   margin-bottom: 2rem;
 }
-
 .textarea-container {
   display: flex;
   justify-content: center;
@@ -188,18 +189,30 @@ export default {
   height: 100%;
 }
 
-#input_text {
-  height: 5rem;
+.textarea-wrapper {
+  position: relative;
   width: 42rem;
+}
+
+#input_text {
+  width: 100%;
+  height: 7rem;
   resize: none;
   border: 1px solid darkgray;
-  border-radius: 0px 5px 5px 5px;
-  padding: 10px;
+  border-radius: 3px;
+  padding: 10px 35px 10px 10px; /* Extra right padding to make space for icon */
+  box-sizing: border-box;
+  overflow: auto;
 }
 
 .clear-text-btn {
-  align-self: flex-end;
-  margin-left: 5px ;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  font-size: 1.2rem;
+  color: #999;
+  cursor: pointer;
+  z-index: 2;
 }
 
 .submit-btn {
@@ -216,24 +229,18 @@ export default {
 
 .submit-btn:hover {
   background-color: #f9fbfb;
-  /*
-  transition: 0.2s ease-in-out;
-  box-shadow: rgba(255, 255, 255, 0.8) 0 0 2rem 1rem;
-   */
-  z-index: 2;
-  position: absolute;
   background: url("../../assets/images/text-background.jpg") repeat;
   background-size: auto;
   color: #de466c;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: moveLeft 10s linear infinite;
-
-
+  background-color:  #eef4f3;
+  transition: 0.2s ease-in-out;
 }
 
 .result-container {
-  margin: 2rem 0rem 2rem 0rem;
+  margin: 2rem 0 2rem 0;
   font-size: 1.2rem;
   width: 100%;
   padding: 5px 10px 5px 10px;

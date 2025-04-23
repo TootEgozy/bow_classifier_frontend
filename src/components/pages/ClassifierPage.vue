@@ -1,11 +1,17 @@
 <template>
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+  </head>
+
   <div class="page-container">
 
     <div class="content-container">
 
       <div class="header-container">
         <h1 class="heading">Classifier</h1>
-        <h3>Select a category (spam or sentiment), input your text and press "classify"</h3>
+        <h3>Input your text and press "classify"</h3>
       </div>
 
       <div class="classifier-container">
@@ -35,6 +41,8 @@ export default {
 * {
   padding: 0.3vw;
   overflow: hidden;
+
+
 }
 
 .page-container {
@@ -49,7 +57,7 @@ export default {
   background-color: rgba(210, 210, 210, 0.5);
   padding: 3rem;
   height: 80vh;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
 }
 
 @keyframes moveLeft {
@@ -62,7 +70,24 @@ export default {
 }
 
 .heading {
+  font-size: 3rem;
+  margin: 0;
+  line-height: 100%;
+  font-family: "Tourney", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
+  color: #3c6763;
+}
 
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0;
+  margin-top: 2rem;
 }
 
 form {
