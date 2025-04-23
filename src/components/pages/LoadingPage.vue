@@ -10,6 +10,10 @@
 
 <style scoped>
 
+* {
+  overflow: visible;
+}
+
 .loading-page-container {
   margin: 0;
   padding: 0;
@@ -23,9 +27,13 @@
 
 .loading_msg {
   margin: 1vh;
-  font-size: 15px;
+  font-size: 1.5rem;
   align-self: center;
-  font-family: 'Segoe UI', 'Tahoma', 'Geneva', sans-serif;
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
 
 .loading_container {
@@ -36,22 +44,34 @@
   justify-content: center;
   flex-direction: column;
 }
-
+/* HTML: <div class="loader"></div> */
 .loader {
-  width: 50px;
-  aspect-ratio: 1;
+  margin: 2vh;
+  width: 25px;
+  height: 50px;
+  display: grid;
   color: #000;
-  border: 2px solid;
-  box-sizing: border-box;
   background:
-      repeating-conic-gradient(#0000 0 90deg, currentColor 0 180deg),
-      repeating-conic-gradient(currentColor 0 90deg, #0000 0 180deg);
-  background-size: 16px 16px;
-  background-position: 0 0;
-  animation: l7 2s infinite;
+      linear-gradient(currentColor 0 0) top/100% 2px,
+      radial-gradient(farthest-side at  top, #0000 calc(100% - 2px),currentColor calc(100% - 1px) ,#0000) top,
+      linear-gradient(currentColor 0 0) bottom/100% 2px,
+      radial-gradient(farthest-side at  bottom, #0000 calc(100% - 2px),currentColor calc(100% - 1px) ,#0000) bottom;
+  background-size: 100% 1px,100% 50%;
+  background-repeat: no-repeat;
+  animation: l18 4s infinite linear;
 }
-
-@keyframes l7 {
-  100% {background-position: 0px 32px, 16px 0px}
+.loader::before,
+.loader::after {
+  content: "";
+  grid-area: 1/1;
+  background: inherit;
+  border: inherit;
+  animation: inherit;
+}
+.loader::after {
+  animation-duration: 2s;
+}
+@keyframes l18 {
+  100% {transform: rotate(1turn)}
 }
 </style>

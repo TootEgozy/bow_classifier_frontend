@@ -1,9 +1,4 @@
 <template>
-  <head>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Tourney:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
-  </head>
 
   <div class="page-container">
 
@@ -11,7 +6,7 @@
 
       <div class="header-container">
         <h1 class="heading">Classifier</h1>
-        <h3>Input your text and press "classify"</h3>
+        <h3 class="second-heading">Input your text and press >> Classify</h3>
       </div>
 
       <div class="classifier-container">
@@ -88,6 +83,14 @@ export default {
   flex-direction: column;
   gap: 0;
   margin-top: 2rem;
+}
+
+.second-heading {
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
 
 form {

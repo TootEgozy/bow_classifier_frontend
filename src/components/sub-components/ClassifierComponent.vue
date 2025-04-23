@@ -48,7 +48,7 @@
       <div v-if="serverReady">
         <button type="submit" class="submit-btn">Classify</button>
       </div>
-      <div v-else><div class="loader"></div></div>
+      <div v-else class="loader-wrapper"><div class="loader"></div></div>
 
 
       <div class="result-container" v-if="classification">
@@ -119,9 +119,13 @@ export default {
     },
 
     async handleSubmit() {
-      this.classification = null;
-      const res = await axios.post(`${this.serverAddress}/classify`, {input_text: this.inputText}, {params: {cls_type: this.clsType}});
-      this.classification = res.data.result;
+      try {
+        this.classification = null;
+        const res = await axios.post(`${this.serverAddress}/classify`, {input_text: this.inputText}, {params: {cls_type: this.clsType}});
+        this.classification = res.data.result;
+      } catch (e) {
+        console.error("Error posting classification: ", e);
+      }
     },
   },
   watch: {
@@ -140,6 +144,11 @@ export default {
 
 * {
   overflow: visible;
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
 
 .detect-label {
@@ -157,6 +166,7 @@ export default {
 .tab-btn:hover {
   background-color: #eef4f3;
   transition: 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 @keyframes moveLeft {
@@ -237,6 +247,7 @@ export default {
   animation: moveLeft 10s linear infinite;
   background-color:  #eef4f3;
   transition: 0.2s ease-in-out;
+  cursor: pointer;
 }
 
 .result-container {
@@ -249,11 +260,15 @@ export default {
   border: 1px solid lightgray;
 }
 
+.loader-wrapper {
+  margin: 1rem;
+}
+
 .loader {
   overflow: visible;
   width: 20px;
   aspect-ratio: 1;
-  color: #000;
+  color: gray;
   border: 1px solid;
   display: grid;
   box-sizing: border-box;

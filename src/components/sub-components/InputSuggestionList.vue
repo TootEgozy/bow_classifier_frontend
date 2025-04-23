@@ -94,6 +94,11 @@ export default {
   overflow: hidden;
   box-sizing: border-box;
   font-size: 0.8rem;
+  font-family: "Inconsolata", monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+  font-variation-settings: "wdth" 100;
 }
 
 .collapsible-list {
@@ -132,6 +137,7 @@ export default {
 
 .list li:hover {
   background-color: #eef4f3;
+  cursor: default;
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -142,14 +148,13 @@ export default {
 }
 
 .refresh-inputs-btn {
-  height: 1.2rem;
-  width: 1.2rem;
+  height: 1rem;
+  width: 1rem;
   opacity: 50%;
 }
 
 .refresh-inputs-btn:hover {
-  opacity: 1;
-  transition: opacity 0.5s;
+  cursor: pointer;
 }
 
 .arrow-icon {
