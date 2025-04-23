@@ -204,6 +204,10 @@ export default {
   width: 42rem;
 }
 
+textarea:focus {
+  outline: none;
+}
+
 #input_text {
   width: 100%;
   height: 7rem;
