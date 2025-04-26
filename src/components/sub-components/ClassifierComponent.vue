@@ -36,7 +36,7 @@
 
     <form @submit.prevent="handleSubmit">
 
-      <div class="textarea-container">
+      <div class="textarea-container w-[40rem] max-w-[42rem]">
         <div class="textarea-wrapper">
           <textarea id="input_text" v-model="inputText" required></textarea>
           <div class="clear-text-btn" @click="clearInput">
@@ -155,10 +155,14 @@ export default {
   margin-right: 0.5rem;
 }
 
+.tabs-container {
+  margin-bottom: 0.4rem;
+}
+
 .tab-btn {
   border: none;
-  margin: 0.5rem;
-  padding: 0.4rem;
+  margin: 0.3rem;
+  padding: 3px 7px;
   background-color: transparent;
   font-size: 1rem;
 }
@@ -256,12 +260,13 @@ textarea:focus {
 
 .result-container {
   margin: 2rem 0 2rem 0;
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
   width: 100%;
   padding: 5px 10px 5px 10px;
-  background-color: white;
-  border-radius: 5px;
+  border-radius: 3px;
   border: 1px solid lightgray;
+  background-color: #eef4f3;
 }
 
 .loader-wrapper {

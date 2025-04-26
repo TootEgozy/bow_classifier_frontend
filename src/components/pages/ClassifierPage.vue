@@ -49,7 +49,7 @@ export default {
 .content-container {
   background-color: rgba(210, 210, 210, 0.5);
   padding: 3rem;
-  height: 80vh;
+  height: 90%;
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
 }
 
