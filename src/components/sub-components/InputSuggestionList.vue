@@ -1,52 +1,51 @@
 <template>
-  <div class="collapsible-list">
-    <div class="list-header" @click="toggleList">
+  <div class="mt-2 w-[40rem] max-w-[42rem] rounded-md border border-gray-300 font-mono text-sm overflow-hidden inputs-container">
+    <div
+        class="flex justify-between items-center p-2 rounded-md cursor-pointer hover:bg-gray-100"
+        @click="toggleList"
+    >
       <span>{{ title }}</span>
-
-      <span class="arrow">
+      <span>
         <img
             v-if="isOpen"
             src="../../assets/images/uparrow.svg"
-            class="arrow-icon"
+            class="h-3 w-3 inline-block"
             key="up"
         />
         <img
             v-else
             src="../../assets/images/downarrow.svg"
-            class="arrow-icon"
+            class="h-3 w-3 inline-block"
             key="down"
         />
       </span>
-
     </div>
-    <transition name="fade">
-      <div v-if="isOpen" class="collapsable-list-content">
 
-        <ul v-if="items.length > 0" class="list">
+    <transition name="fade">
+      <div v-if="isOpen" class="p-2">
+        <ul v-if="items.length > 0" class="list-none p-0 m-0 max-w-2xl">
           <li
               v-for="(item, index) in items"
               :key="index"
               @click="select"
+              class="p-1 border-t border-gray-200 hover:bg-gray-100 cursor-default"
           >
             {{ item }}
           </li>
         </ul>
         <div v-else>
-          <SmallLoading/>
+          <SmallLoading />
         </div>
 
-        <div class="refresh-btn-container">
+        <div class="flex justify-end mt-2">
           <img
-              class="refresh-inputs-btn"
+              class="h-4 w-4 opacity-50 hover:cursor-pointer"
               @click="refreshInputs"
               src="../../assets/images/reload-icon.svg"
               alt="refresh"
           >
         </div>
-
       </div>
-
-
     </transition>
   </div>
 </template>
@@ -56,7 +55,7 @@ import SmallLoading from "@/components/sub-components/SmallLoading.vue";
 
 export default {
   name: 'InputSuggestionList',
-  components: {SmallLoading},
+  components: { SmallLoading },
   data() {
     return {
       isOpen: false,
@@ -89,57 +88,6 @@ export default {
 </script>
 
 <style scoped>
-
-* {
-  overflow: hidden;
-  box-sizing: border-box;
-  font-size: 0.8rem;
-  font-family: "Inconsolata", monospace;
-  font-optical-sizing: auto;
-  font-weight: 400;
-  font-style: normal;
-  font-variation-settings: "wdth" 100;
-}
-
-.collapsible-list {
-  margin-top: 10px;
-  border-radius: 5px;
-  border: 1px solid lightgray;
-}
-
-.collapsable-list-content {
-  padding: 0.5rem;
-}
-
-.list-header {
-  display: flex;
-  justify-content: space-between;
-  padding: 5px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.list-header:hover {
-  background-color: #eef4f3;
-}
-
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  max-width: 40rem;
-}
-
-.list li {
-  padding: 0.3rem;
-  border-top: 1px solid #eee;
-}
-
-.list li:hover {
-  background-color: #eef4f3;
-  cursor: default;
-}
-
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.2s;
 }
@@ -147,27 +95,18 @@ export default {
   opacity: 0;
 }
 
-.refresh-inputs-btn {
-  height: 1rem;
-  width: 1rem;
-  opacity: 50%;
+@media (max-width: 800px) {
+  .inputs-container {
+    max-width: 90%;
+    padding: 0rem;
+  }
 }
 
-.refresh-inputs-btn:hover {
-  cursor: pointer;
+@media (max-width: 400px) {
+  .inputs-container {
+    max-width: 90%;
+    padding: 0rem;
+  }
 }
-
-.arrow-icon {
-  height: 0.8rem;
-  width: 0.8rem;
-  display: inline-block;
-  vertical-align: middle;
-}
-
-.refresh-btn-container {
-  display: flex;
-  justify-content: flex-end;
-}
-
 
 </style>

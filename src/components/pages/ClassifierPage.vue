@@ -2,7 +2,7 @@
 
   <div class="page-container">
 
-    <div class="content-container">
+    <div class="content-container ">
 
       <div class="header-container">
         <h1 class="heading">Classifier</h1>
@@ -36,8 +36,6 @@ export default {
 * {
   padding: 0.3vw;
   overflow: hidden;
-
-
 }
 
 .page-container {
@@ -66,7 +64,7 @@ export default {
 
 .heading {
   font-size: 3rem;
-  margin: 0;
+  margin: 0.5rem;
   line-height: 100%;
   font-family: "Tourney", sans-serif;
   font-optical-sizing: auto;
@@ -87,6 +85,8 @@ export default {
 
 .second-heading {
   font-family: "Inconsolata", monospace;
+  font-size: 1.1rem;
+  margin: 0.5rem;
   font-optical-sizing: auto;
   font-weight: 400;
   font-style: normal;
@@ -103,4 +103,35 @@ form {
 button {
   padding: 2px;
 }
+
+@media (max-width: 800px) {
+  .content-container {
+    max-width: 90%;
+    max-height: 100%;
+    overflow-y: scroll;
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 400px) {
+  .content-container {
+    padding: 0.5rem;
+  }
+
+  .heading {
+    font-size: 2.5rem;
+  }
+
+  .second-heading {
+    font-size: 1rem;
+  }
+}
+
+@media (max-height: 650px) {
+  .content-container {
+    padding: 1rem;
+    overflow-y: scroll;
+  }
+}
+
 </style>
