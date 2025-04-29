@@ -307,6 +307,4 @@ textarea:focus {
   100% {transform:rotate(1turn)}
 }
 
-
-
 </style>

@@ -39,6 +39,7 @@ export default {
 }
 
 .page-container {
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: left;
@@ -49,8 +50,9 @@ export default {
 .content-container {
   background-color: rgba(210, 210, 210, 0.5);
   padding: 3rem;
-  height: 90%;
+  height: 80vh;
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
+  overflow-y: auto;
 }
 
 @keyframes moveLeft {
@@ -130,7 +132,6 @@ button {
 @media (max-height: 650px) {
   .content-container {
     padding: 1rem;
-    overflow-y: scroll;
   }
 }
 
