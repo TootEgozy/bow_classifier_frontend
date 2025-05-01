@@ -50,9 +50,8 @@ export default {
 .content-container {
   background-color: rgba(210, 210, 210, 0.5);
   padding: 3rem;
-  height: 80vh;
+  height: 85vh;
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
-  overflow-y: auto;
 }
 
 @keyframes moveLeft {
@@ -110,7 +109,6 @@ button {
   .content-container {
     max-width: 90%;
     max-height: 100%;
-    overflow-y: scroll;
     padding: 1rem;
   }
 }

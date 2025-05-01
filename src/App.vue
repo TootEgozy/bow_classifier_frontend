@@ -46,18 +46,16 @@ export default {
 
 * {
   font-family: 'Segoe UI', 'Tahoma', 'Geneva', sans-serif;
-  overflow: hidden;
   box-sizing: border-box;
 }
 
-html, body, #app {
-  height: 100%;
-  margin: 0;
-  padding: 0;
+#app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 body {
-  height: 100vh;
   background-image: url("./assets/images/background-img.svg");
   background-repeat: no-repeat;
   background-size: cover;

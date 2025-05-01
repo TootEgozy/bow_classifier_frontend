@@ -36,7 +36,7 @@
 
     <form @submit.prevent="handleSubmit">
 
-      <div class="textarea-container w-[40rem] max-w-[42rem]">
+      <div class="textarea-container">
         <div class="textarea-wrapper">
           <textarea id="input_text" v-model="inputText" required></textarea>
           <div class="clear-text-btn" @click="clearInput">
@@ -200,12 +200,14 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100%;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .textarea-wrapper {
   position: relative;
-  width: 42rem;
+  width: 100%;
+  max-width: 42rem;
 }
 
 textarea:focus {
