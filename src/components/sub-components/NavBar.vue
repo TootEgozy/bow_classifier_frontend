@@ -44,6 +44,7 @@ export default {
   left: 0;
   box-sizing: border-box;
   width: 100vw;
+  z-index: 1000;
 }
 
 .container {
