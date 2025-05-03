@@ -88,6 +88,10 @@ export default {
 </script>
 
 <style scoped>
+
+* {
+  font-family: "Inconsolata", monospace;
+}
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.2s;
 }

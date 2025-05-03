@@ -50,7 +50,7 @@ export default {
 .content-container {
   background-color: rgba(210, 210, 210, 0.5);
   padding: 3rem;
-  height: 85vh;
+  min-height: 85vh;
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
 }
 
@@ -69,7 +69,7 @@ export default {
   line-height: 100%;
   font-family: "Tourney", sans-serif;
   font-optical-sizing: auto;
-  font-weight:400;
+  font-weight: 900;
   font-style: normal;
   font-variation-settings: "wdth" 100;
   color: #3c6763;

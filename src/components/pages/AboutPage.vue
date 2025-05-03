@@ -94,7 +94,7 @@ export default {
 }
 
 .page-container {
-  height: 100vh;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: left;
@@ -102,9 +102,10 @@ export default {
 }
 
 .content-container {
-  background-color: rgba(210, 210, 210, 0.5);
+  background-color: rgba(210, 210, 210, 0.3);
   padding: 7rem;
   width: 80vw;
+  min-height: 90vh;
   height: 100%;
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
 }
@@ -197,18 +198,10 @@ tr + tr {
 }
 
 @media (max-width: 800px) {
-  .content-container {
-    max-width: 90%;
-    max-height: 100%;
-    overflow-y: scroll;
-    padding: 1rem;
-  }
+
 }
 
 @media (max-width: 400px) {
-  .content-container {
-    padding: 0.5rem;
-  }
 
   .heading {
     font-size: 2.5rem;
@@ -220,8 +213,6 @@ tr + tr {
 }
 
 @media (max-height: 650px) {
-  .content-container {
-    padding: 1rem;
-  }
+
 }
 </style>
