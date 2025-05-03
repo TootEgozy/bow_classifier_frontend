@@ -48,12 +48,20 @@
       <div v-if="serverReady">
         <button type="submit" class="submit-btn">Classify</button>
       </div>
-      <div v-else class="loader-wrapper"><div class="loader"></div></div>
+      <div v-else class="loader-wrapper">
+        <SquareLoader/>
+      </div>
 
 
       <div class="result-container" v-if="classification">
-        <span> Classification: </span>
-        <span> {{classification}} </span>
+        <div class="cls-label-and-result">
+          <span> Classification: </span>
+          <span>{{classification}}</span>
+        </div>
+        <router-link class="wrong-result-link" to="/about#wrong">Wrong result?</router-link>
+      </div>
+      <div v-if="awaitingClassification" class="loader-wrapper">
+        <SquareLoader/>
       </div>
 
     </form>
@@ -66,11 +74,13 @@
 
 import axios from "axios";
 import InputSuggestionList from "@/components/sub-components/InputSuggestionList.vue";
+import SquareLoader from "@/components/sub-components/SquareLoader.vue";
 import checkServerReady from "@/utils/checkServerReady";
 
 export default {
   components: {
-    InputSuggestionList
+    InputSuggestionList,
+    SquareLoader,
   },
   data() {
     return {
@@ -79,6 +89,7 @@ export default {
       clsType: 'spam',
       serverReady: true,
       classification: null,
+      awaitingClassification: false,
       serverAddress: process.env.VUE_APP_SERVER_ADDRESS,
     };
   },
@@ -121,8 +132,10 @@ export default {
     async handleSubmit() {
       try {
         this.classification = null;
+        this.awaitingClassification = true;
         const res = await axios.post(`${this.serverAddress}/classify`, {input_text: this.inputText}, {params: {cls_type: this.clsType}});
         this.classification = res.data.result;
+        this.awaitingClassification = false;
       } catch (e) {
         console.error("Error posting classification: ", e);
       }
@@ -132,6 +145,7 @@ export default {
     async clsType() {
       this.serverReady = false;
       this.suggestedInputs = [];
+      this.classification = null;
       checkServerReady(this.clsType, this.serverAddress, this.updateServerReady);
       await this.waitForDataChange(this, "serverReady");
       await this.getSuggestedInputs();
@@ -269,44 +283,25 @@ textarea:focus {
   border-radius: 3px;
   border: 1px solid lightgray;
   background-color: #eef4f3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .loader-wrapper {
   margin: 1rem;
 }
 
-.loader {
-  overflow: visible;
-  width: 20px;
-  aspect-ratio: 1;
-  color: gray;
-  border: 1px solid;
-  display: grid;
-  box-sizing: border-box;
-  animation: l1 4s infinite linear;
+.wrong-result-link {
+  font-size: 0.7rem;
+  color: #333333;
+  opacity: 0.3;
 }
 
-.loader::before,
-.loader::after {
-  overflow: visible;
-  content: "";
-  grid-area: 1/1;
-  margin: auto;
-  width: 70.7%;
-  aspect-ratio: 1;
-  border: 1px solid;
-  box-sizing: content-box;
-  animation: inherit;
+.wrong-result-link:hover {
+  opacity: 1;
+  transition: opacity 0.2s ease-in-out;
 }
-.loader::after {
-  overflow: visible;
-  width: 50%;
-  aspect-ratio: 1;
-  border: 1px solid;
-  animation-duration: 2s;
-}
-@keyframes l1{
-  100% {transform:rotate(1turn)}
-}
+
 
 </style>

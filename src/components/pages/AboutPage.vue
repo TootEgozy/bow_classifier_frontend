@@ -133,12 +133,13 @@
             <span>
               To manage storage space, only one classification type is loaded at a time, so switching categories may cause a short delay of 20–40 seconds.
             </span>
-            <h4 class="secondary-heading">Why did I get a wrong classification?</h4>
+            <h4 class="secondary-heading" id="wrong-classification">Why did I get a wrong classification?</h4>
             <span>Any NLP (natural language processing) model is only as good as the data it was trained on.</span>
             <span>
               Since this is a hobby project, I relied on free csv files from <a href="https://www.kaggle.com/">Kaggle</a>
               to train the model.
-              These datasets work well for prototyping, but they aren't as large or diverse as those used by commercial models.
+              These datasets work well for prototyping, but they aren't as large or diverse as those used by commercial models,
+              so some edge-cases are not covered.
             </span>
           </div>
         </transition>
@@ -170,6 +171,21 @@ export default {
       this.showCommonQuestions = !this.showCommonQuestions;
     }
   },
+  mounted() {
+    const hash = this.$route.hash.replace('#', '');
+    if (hash === 'wrong') {
+      this.showCommonQuestions = true;
+
+      this.$nextTick(() => {
+        const el = document.getElementById('wrong-classification');
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          el.classList.add('highlight');
+          setTimeout(() => el.classList.remove('highlight'), 3000);
+        }
+      });
+    }
+  }
 };
 </script>
 
@@ -296,6 +312,11 @@ strong {
   border-radius: 0.5rem;
   opacity: 85%;
   z-index: 1;
+}
+
+.highlight {
+  background-color: rgba(0, 255, 234, 0.2);
+  transition: background-color 1s ease-in-out;
 }
 
 .fade-enter-active,
