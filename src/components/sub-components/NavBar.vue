@@ -17,7 +17,6 @@ export default {
     const links = [
       { text: 'Classifier', url: '/' },
       { text: 'About', url: '/about' },
-      { text: 'Contact', url: '/contact' },
     ];
 
     return { links };

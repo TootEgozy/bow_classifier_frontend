@@ -11,6 +11,7 @@
   <div v-if="serverReady">
     <NavBar />
     <router-view></router-view>
+    <FooterComponent />
   </div>
   <div v-else><LoadingPage /></div>
 </template>
@@ -19,11 +20,12 @@
 
 import LoadingPage from "@/components/pages/LoadingPage.vue";
 import NavBar from "@/components/sub-components/NavBar.vue";
+import FooterComponent from "@/components/sub-components/FooterComponent.vue";
 import checkServerReady from "@/utils/checkServerReady";
 
 export default {
   components: {
-    NavBar, LoadingPage
+    NavBar, LoadingPage, FooterComponent,
   },
   data() {
     return {

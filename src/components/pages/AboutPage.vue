@@ -190,7 +190,7 @@ export default {
   background-color: rgba(210, 210, 210, 0.4);
   padding: 7rem;
   width: 80vw;
-  min-height: 90vh;
+  min-height: 92vh;
   height: 100%;
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
 }
