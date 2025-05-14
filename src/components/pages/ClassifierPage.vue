@@ -1,32 +1,47 @@
 <template>
 
   <div class="page-container">
-
-    <div class="content-container ">
-
-      <div class="header-container">
-        <h1 class="heading">Classifier</h1>
-        <h3 class="second-heading">Input your text and press >> Classify</h3>
+    <transition name="slide-fade" mode="out-in">
+      <div v-if="introOpen" key="intro">
+        <IntroPage @close-intro="toggleIntro" />
       </div>
 
-      <div class="classifier-container">
-        <ClassifierComponent />
+      <div v-else key="main">
+        <div class="content-container">
+          <div class="header-container">
+            <h1 class="heading">Classifier</h1>
+            <h3 class="second-heading">Input your text and press >> Classify</h3>
+          </div>
+
+          <div class="classifier-container">
+            <ClassifierComponent />
+          </div>
+        </div>
       </div>
-
-
-    </div>
-
+    </transition>
   </div>
 </template>
 
 <script>
 
 import ClassifierComponent from "@/components/sub-components/ClassifierComponent.vue";
+import IntroPage from "@/components/pages/IntroPage.vue";
 
 export default {
+  data() {
+    return {
+      introOpen: true,
+    }
+  },
   components: {
     ClassifierComponent,
-  }
+    IntroPage,
+  },
+   methods: {
+    toggleIntro() {
+      this.introOpen = !this.introOpen;
+    }
+   }
 };
 
 </script>
@@ -44,7 +59,7 @@ export default {
   align-items: center;
   justify-content: left;
   flex-direction: column;
-  margin-top: 5rem;
+  margin-top: 2rem;
 }
 
 .content-container {
@@ -103,6 +118,17 @@ form {
 
 button {
   padding: 2px;
+}
+
+:deep(.slide-fade-enter-active),
+:deep(.slide-fade-leave-active) {
+  transition: all 0.5s ease;
+}
+
+:deep(.slide-fade-enter-from),
+:deep(.slide-fade-leave-to) {
+  opacity: 0;
+  transform: translateY(10vh);
 }
 
 @media (max-width: 800px) {
