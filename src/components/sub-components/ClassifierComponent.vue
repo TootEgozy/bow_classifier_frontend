@@ -5,15 +5,6 @@
 
   <div class="classifier-container">
 
-    <div class="suggestion-list-container">
-      <inputSuggestionList
-          title="Suggestions"
-          :items="suggestedInputs"
-          @input-selected="updateInputText"
-          @refresh-inputs="getSuggestedInputs"
-      />
-    </div>
-
     <div class="tabs-container">
       <span class="detect-label"> Detect:</span>
       <button
@@ -39,6 +30,7 @@
       <div class="textarea-container">
         <div class="textarea-wrapper">
           <textarea id="input_text" v-model="inputText" required></textarea>
+          <img class="get-input-btn" src="../../assets/images/dice.svg" alt="dice" @click="getRandomInput">
           <div class="clear-text-btn" @click="clearInput">
             <i class="fa fa-trash-o"></i>
           </div>
@@ -73,18 +65,15 @@
 <script>
 
 import axios from "axios";
-import InputSuggestionList from "@/components/sub-components/InputSuggestionList.vue";
 import SquareLoader from "@/components/sub-components/SquareLoader.vue";
-import checkServerReady from "@/utils/checkServerReady";
+// import checkServerReady from "@/utils/checkServerReady";
 
 export default {
   components: {
-    InputSuggestionList,
     SquareLoader,
   },
   data() {
     return {
-      suggestedInputs: [],
       inputText: '',
       clsType: 'spam',
       serverReady: true,
@@ -94,15 +83,11 @@ export default {
     };
   },
 
-  mounted() {
-    this.getSuggestedInputs();
-  },
-
   methods: {
     async getSuggestedInputs() {
       try {
         const res = await axios.post(`${this.serverAddress}/generate_inputs`,{count: 3}, {params: { cls_type: this.clsType }});
-        this.suggestedInputs = res.data.inputs;
+        this.inputText = res.data.inputs[0];
       } catch (e) {
         console.error('error getting inputs from server: '+e);
       }
@@ -125,6 +110,13 @@ export default {
       this.inputText = "";
     },
 
+    async getRandomInput() {
+      this.serverReady = false;
+      // checkServerReady(this.clsType, this.serverAddress, this.updateServerReady);
+      await this.waitForDataChange(this, "serverReady");
+      await this.getSuggestedInputs();
+    },
+
     updateInputText(selectedInput) {
       this.inputText = selectedInput;
     },
@@ -140,17 +132,7 @@ export default {
         console.error("Error posting classification: ", e);
       }
     },
-  },
-  watch: {
-    async clsType() {
-      this.serverReady = false;
-      this.suggestedInputs = [];
-      this.classification = null;
-      checkServerReady(this.clsType, this.serverAddress, this.updateServerReady);
-      await this.waitForDataChange(this, "serverReady");
-      await this.getSuggestedInputs();
-    }
-  },
+  }
 };
 </script>
 
@@ -234,7 +216,7 @@ textarea:focus {
   resize: none;
   border: 1px solid darkgray;
   border-radius: 3px;
-  padding: 10px 35px 10px 10px; /* Extra right padding to make space for icon */
+  padding: 10px 35px 10px 10px;
   box-sizing: border-box;
   overflow: auto;
 }
@@ -245,6 +227,16 @@ textarea:focus {
   bottom: 10px;
   font-size: 1.2rem;
   color: #999;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.get-input-btn {
+  position: absolute;
+  right: 32px;
+  bottom: 15px;
+  width: 1.2rem;
+  height: auto;
   cursor: pointer;
   z-index: 2;
 }
