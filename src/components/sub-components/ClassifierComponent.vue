@@ -199,15 +199,6 @@ export default {
   cursor: pointer;
 }
 
-@keyframes moveLeft {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: +100% 0;
-  }
-}
-
 .selected-tab {
   background-color: rgb(121, 121, 121, 0.2);
 }
@@ -226,7 +217,7 @@ export default {
   width: 100%;
   max-width: 42rem;
   margin-top: 0.8rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 }
 
 textarea:focus {
@@ -272,7 +263,7 @@ textarea:focus {
   border-radius: 5px;
   font-size: 0.7rem;
   color: #1b1b1b;
-  bottom: 0.5rem;
+  bottom: -0.3rem;
   right: 0;
   background-color: rgb(255, 255, 255, 0.5);
 }
@@ -281,29 +272,38 @@ textarea:focus {
   opacity: 1;
 }
 
+
+@keyframes moveLeft {
+  0% {
+    background-position: 0 0;
+  }
+  100% {
+    background-position: 200% 100%;
+  }
+}
+
 .submit-btn {
-  margin-top: 2rem;
-  padding: 5px 10px;
+  margin-top: 1rem;
+  padding: 0.8rem 1.2rem;
   margin-right: -1px;
-  border-radius: 2px;
+  border-radius: 0.8rem;
   border: 1px solid lightgray;
   background-color: inherit;
   font-size: 1.1rem;
   font-weight: bold;
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
+
+  background-image: url("../../assets/images/background.jpg");
+  background-size: 1000%;
+  background-repeat: repeat;
+  background-position: 0 0;
+  animation: moveLeft 80s linear infinite;
 }
 
 .submit-btn:hover {
-  background-color: #f9fbfb;
-  background: url("../../assets/images/text-background.jpg") repeat;
-  background-size: auto;
-  color: #de466c;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: moveLeft 10s linear infinite;
-  background-color:  #eef4f3;
-  transition: 0.2s ease-in-out;
   cursor: pointer;
+  color: #515151;
+  transition: 0.2s ease-in-out;
 }
 
 .result-container {
