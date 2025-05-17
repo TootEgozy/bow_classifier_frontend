@@ -119,12 +119,17 @@ export default {
       }
     },
 
+    noHam(classification) {
+      if(classification === "ham") return "not spam";
+      return classification;
+    },
+
     async handleSubmit() {
       try {
         this.classification = null;
         this.awaitingClassification = true;
         const res = await axios.post(`${this.serverAddress}/classify`, {input_text: this.inputText}, {params: {cls_type: this.clsType}});
-        this.classification = res.data.result;
+        this.classification = this.noHam(res.data.result);
         this.awaitingClassification = false;
       } catch (e) {
         console.error("Error posting classification: ", e);
@@ -241,7 +246,7 @@ textarea:focus {
 
 .clear-text-btn {
   position: absolute;
-  right: 10px;
+  right: 1rem;
   bottom: 10px;
   font-size: 1.2rem;
   color: #999;
@@ -251,7 +256,7 @@ textarea:focus {
 
 .get-input-btn {
   position: absolute;
-  right: 35px;
+  right: 2.7rem;
   bottom: 15px;
   width: 1.2rem;
   height: auto;
