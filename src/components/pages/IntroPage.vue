@@ -7,23 +7,16 @@
       <div class="header-container">
         <span class="x-button" @click="closeIntro"><img src="../../assets/images/x.svg" alt="close"></span>
         <h1 class="heading">About this project</h1>
-        <p>This is an educational project I built to explore the basics of machine learning and practice natural language processing (NLP)</p>
-
-          <p>I created this user interface to make it easy to interact with the API and test the model directly.</p>
-
-          <p>The model supports two types of text classification:</p>
-
-          <ul>
-            <li> spam / not spam</li>
-            <li> positive / negative sentiment</li>
-          </ul>
-
-          <p>Just type any text, choose a classification type, and click "Classify" to see the result.</p>
-          <p>You can also try the sample inputs in the “Suggestions” box.</p>
-
       </div>
-
-
+      <p>This is an educational project I built to explore the basics of machine learning and practice natural language processing (NLP)</p>
+      <p>I created this user interface to make it easy to interact with the API and test the model directly.</p>
+      <p>The model supports two types of text classification:</p>
+      <ul>
+        <li> spam / not spam</li>
+        <li> positive / negative sentiment</li>
+      </ul>
+      <p>Just type any text, choose a classification type, and click "Classify" to see the result.</p>
+      <p>You can also try the sample inputs in the “Suggestions” box.</p>
 
     </div>
 
@@ -43,11 +36,10 @@ export default {
 </script>
 
 <style scoped>
-
 * {
-  padding: 0.3vw;
-  overflow: hidden;
-  font-family: "Inconsolata", monospace;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 .page-container {
@@ -68,6 +60,12 @@ export default {
   flex-direction: column;
   align-items: flex-start;
 }
+
+p {
+  margin-bottom: 1rem;
+  line-height: 0.5rem;
+}
+
 
 @keyframes moveLeft {
   0% {
@@ -92,16 +90,17 @@ export default {
 
 .header-container {
   display: flex;
-  align-items: center;
-  justify-content: center;
   flex-direction: column;
-  gap: 0;
-  margin-top: 2rem;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 1rem 0;
+  width: 100%;
 }
 
 
-button {
+.x-button {
   padding: 2px;
+  align-self: flex-end;
 }
 
 @media (max-width: 800px) {
