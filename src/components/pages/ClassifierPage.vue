@@ -57,7 +57,7 @@ export default {
   height: 100%;
   display: flex;
   align-items: center;
-  justify-content: left;
+  justify-content: center;
   flex-direction: column;
   margin-top: 2rem;
 }
@@ -142,12 +142,22 @@ strong {
     max-width: 90%;
     max-height: 100%;
     padding: 1rem;
+    margin: 1rem;
+  }
+}
+
+@media (max-height: 650px) {
+  .content-container {
+    padding: 1rem;
+    margin: 1rem;
   }
 }
 
 @media (max-width: 400px) {
   .content-container {
     padding: 0.5rem;
+    width: fit-content;
+    margin: 1rem;
   }
 
   .heading {
@@ -156,12 +166,6 @@ strong {
 
   .second-heading {
     font-size: 1rem;
-  }
-}
-
-@media (max-height: 650px) {
-  .content-container {
-    padding: 1rem;
   }
 }
 

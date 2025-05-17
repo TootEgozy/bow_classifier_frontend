@@ -55,9 +55,8 @@
 
 
       <div class="result-container" v-if="classification">
-        <div class="cls-label-and-result">
-          <span> Classification: </span>
-          <span>{{classification}}</span>
+        <div class="cls-text-container">
+          <span id="cls-text">{{classification}}</span>
         </div>
         <router-link class="wrong-result-link" to="/about#wrong">Wrong result?</router-link>
       </div>
@@ -119,9 +118,17 @@ export default {
       }
     },
 
-    noHam(classification) {
-      if(classification === "ham") return "not spam";
-      return classification;
+    decorate(classification) {
+      switch (classification) {
+        case "spam":
+          return "🚩 spam 🚩";
+        case "ham":
+          return "🌿 not spam 🌿";
+        case "positive":
+          return "positive 😊";
+        case "negative":
+          return "negative 😞";
+      }
     },
 
     async handleSubmit() {
@@ -129,7 +136,18 @@ export default {
         this.classification = null;
         this.awaitingClassification = true;
         const res = await axios.post(`${this.serverAddress}/classify`, {input_text: this.inputText}, {params: {cls_type: this.clsType}});
-        this.classification = this.noHam(res.data.result);
+        this.classification = this.decorate(res.data.result);
+        this.$nextTick(() => {
+          const clsText = document.getElementById("cls-text");
+          console.log(clsText);
+          clsText.classList.remove("red");
+          clsText.classList.remove("green");
+          if(this.classification.includes("not spam") || this.classification.includes("positive")) {
+            clsText.classList.add("green");
+          } else {
+            clsText.classList.add("red");
+          }
+        });
         this.awaitingClassification = false;
       } catch (e) {
         console.error("Error posting classification: ", e);
@@ -159,8 +177,8 @@ export default {
 }
 
 .classifier-container{
-  width: 30vw;
   padding: 2rem;
+  width: 100%;
 
 }
 
@@ -226,7 +244,7 @@ textarea:focus {
 
 #input_text {
   width: 100%;
-  height: 7rem;
+  height: 8rem;
   resize: none;
   border: 1px solid darkgray;
   border-radius: 3px;
@@ -272,6 +290,20 @@ textarea:focus {
   opacity: 1;
 }
 
+.red {
+  color: #730000;
+  background-color: rgb(255, 0, 0, 0.01);
+  padding: 0.1rem;
+  border-radius: 0.6rem;
+}
+
+.green {
+  color: #007500;
+  background-color: rgb(0, 255, 0, 0.01);
+  padding: 0.1rem;
+  border-radius: 0.6rem;
+}
+
 
 @keyframes moveLeft {
   0% {
@@ -307,17 +339,20 @@ textarea:focus {
 }
 
 .result-container {
-  margin: 2rem 0 2rem 0;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cls-text-container {
+  margin: 2rem 0 0.5rem 0;
+  width: fit-content;
   font-size: 1rem;
   font-weight: bold;
-  width: 100%;
   padding: 5px 10px 5px 10px;
-  border-radius: 3px;
+  border-radius: 10px;
   border: 1px solid lightgray;
-  background-color: #eef4f3;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
 }
 
 .loader-wrapper {
@@ -325,9 +360,10 @@ textarea:focus {
 }
 
 .wrong-result-link {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: #333333;
   opacity: 0.3;
+  margin-left: 0.1rem;
 }
 
 .wrong-result-link:hover {
