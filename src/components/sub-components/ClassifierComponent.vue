@@ -1,5 +1,6 @@
 <template>
   <head>
+    <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   </head>
 
@@ -30,11 +31,19 @@
       <div class="textarea-container">
         <div class="textarea-wrapper">
           <textarea id="input_text" v-model="inputText" required></textarea>
-          <img class="get-input-btn" src="../../assets/images/dice.svg" alt="dice" @click="getRandomInput">
+          <img
+              class="get-input-btn"
+              src="../../assets/images/dice.svg"
+              alt="dice"
+              @click="getRandomInput"
+              @mouseover="showTooltip"
+              @mouseout="hideTooltip"
+          >
           <div class="clear-text-btn" @click="clearInput">
             <i class="fa fa-trash-o"></i>
           </div>
         </div>
+        <span class="tooltip" id="random-input-tooltip">random suggestion</span>
       </div>
 
       <div v-if="serverReady">
@@ -66,7 +75,6 @@
 
 import axios from "axios";
 import SquareLoader from "@/components/sub-components/SquareLoader.vue";
-// import checkServerReady from "@/utils/checkServerReady";
 
 export default {
   components: {
@@ -84,14 +92,6 @@ export default {
   },
 
   methods: {
-    async getSuggestedInputs() {
-      try {
-        const res = await axios.post(`${this.serverAddress}/generate_inputs`,{count: 3}, {params: { cls_type: this.clsType }});
-        this.inputText = res.data.inputs[0];
-      } catch (e) {
-        console.error('error getting inputs from server: '+e);
-      }
-    },
 
     waitForDataChange(component, key) {
       return new Promise((resolve) => {
@@ -111,14 +111,12 @@ export default {
     },
 
     async getRandomInput() {
-      this.serverReady = false;
-      // checkServerReady(this.clsType, this.serverAddress, this.updateServerReady);
-      await this.waitForDataChange(this, "serverReady");
-      await this.getSuggestedInputs();
-    },
-
-    updateInputText(selectedInput) {
-      this.inputText = selectedInput;
+      try {
+        const res = await axios.post(`${this.serverAddress}/generate_inputs`,{count: 1}, {params: { cls_type: this.clsType }});
+        this.inputText = res.data.inputs[0];
+      } catch (e) {
+        console.error('error getting inputs from server: '+e);
+      }
     },
 
     async handleSubmit() {
@@ -132,6 +130,14 @@ export default {
         console.error("Error posting classification: ", e);
       }
     },
+    showTooltip() {
+      const tooltip = document.getElementById("random-input-tooltip");
+      tooltip.classList.add("show-tooltip");
+    },
+    hideTooltip() {
+      const tooltip = document.getElementById("random-input-tooltip");
+      tooltip.classList.remove("show-tooltip");
+    }
   }
 };
 </script>
@@ -145,6 +151,12 @@ export default {
   font-weight: 400;
   font-style: normal;
   font-variation-settings: "wdth" 100;
+}
+
+.classifier-container{
+  width: 30vw;
+  padding: 2rem;
+
 }
 
 .detect-label {
@@ -189,21 +201,21 @@ export default {
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
 }
 
-.suggestion-list-container {
-  margin-bottom: 2rem;
-}
 .textarea-container {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
   box-sizing: border-box;
+  position: relative;
 }
 
 .textarea-wrapper {
   position: relative;
   width: 100%;
   max-width: 42rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 textarea:focus {
@@ -241,6 +253,23 @@ textarea:focus {
   z-index: 2;
 }
 
+.tooltip {
+  opacity: 0;
+  position: absolute;
+  z-index: 5;
+  padding: 0.1rem 0.5rem 0.1rem 0.5rem;
+  border-radius: 5px;
+  font-size: 0.7rem;
+  color: #1b1b1b;
+  bottom: 0.5rem;
+  right: 0;
+  background-color: rgb(255, 255, 255, 0.5);
+}
+
+.show-tooltip {
+  opacity: 1;
+}
+
 .submit-btn {
   margin-top: 2rem;
   padding: 5px 10px;
@@ -250,7 +279,7 @@ textarea:focus {
   background-color: inherit;
   font-size: 1.1rem;
   font-weight: bold;
-  box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+  box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
 }
 
 .submit-btn:hover {
