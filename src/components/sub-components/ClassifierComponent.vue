@@ -7,7 +7,6 @@
   <div class="classifier-container">
 
     <div class="tabs-container">
-      <span class="detect-label"> Detect:</span>
       <button
           id="spam-tab"
           @click="clsType='spam'"
@@ -16,6 +15,7 @@
       >
         Spam
       </button>
+      <span class="buttons-separator"> </span>
       <button
           id="sentiment-tab"
           @click="clsType='sentiment'"
@@ -164,19 +164,32 @@ export default {
 }
 
 .tabs-container {
-  margin-bottom: 0.4rem;
+  padding: 0.4rem;
+  background-color: rgb(255, 255, 255, 0.3);
+  border-radius: 0.7rem;
+  border: 1px solid darkgray;
+  width: 12vw;
+  min-width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
 .tab-btn {
   border: none;
-  margin: 0.3rem;
-  padding: 3px 7px;
+  padding: 0.1rem 1.5rem 0.1rem 1.5rem;
   background-color: transparent;
   font-size: 1rem;
+  border-radius: 0.6rem;
+}
+
+.buttons-separator {
+  width: 0.5rem;
 }
 
 .tab-btn:hover {
-  background-color: #eef4f3;
+  background-color: rgb(121, 121, 121, 0.2);
   transition: 0.2s ease-in-out;
   cursor: pointer;
 }
@@ -191,14 +204,7 @@ export default {
 }
 
 .selected-tab {
-  background: url("../../assets/images/text-background.jpg") repeat;
-  background-size: auto;
-  color: #de466c;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: moveLeft 10s linear infinite;
-  border: 1px solid lightgray;
-  box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
+  background-color: rgb(121, 121, 121, 0.2);
 }
 
 .textarea-container {
@@ -214,7 +220,7 @@ export default {
   position: relative;
   width: 100%;
   max-width: 42rem;
-  margin-top: 1.5rem;
+  margin-top: 0.8rem;
   margin-bottom: 1.5rem;
 }
 
@@ -245,7 +251,7 @@ textarea:focus {
 
 .get-input-btn {
   position: absolute;
-  right: 32px;
+  right: 35px;
   bottom: 15px;
   width: 1.2rem;
   height: auto;

@@ -10,7 +10,7 @@
         <div class="content-container">
           <div class="header-container">
             <h1 class="heading">Classifier</h1>
-            <h3 class="second-heading">Input your text and press >> Classify</h3>
+            <h3 class="second-heading">Analyze your text for spam and emotional tone</h3>
           </div>
 
           <div class="classifier-container">
@@ -129,6 +129,12 @@ button {
 :deep(.slide-fade-leave-to) {
   opacity: 0;
   transform: translateY(10vh);
+}
+
+strong {
+  padding: 0;
+  margin: 0;
+  font-weight: 500;
 }
 
 @media (max-width: 800px) {
