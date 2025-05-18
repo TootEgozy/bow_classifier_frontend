@@ -4,21 +4,27 @@
 
     <div class="content-container ">
 
-      <div class="header-container">
-        <span class="x-button" @click="closeIntro"><img src="../../assets/images/x.svg" alt="close"></span>
-        <h1 class="heading">About this project</h1>
-      </div>
-      <p>This is an educational project I built to explore the basics of machine learning and practice natural language processing (NLP)</p>
-      <p>I created this user interface to make it easy to interact with the API and test the model directly.</p>
-      <p>The model supports two types of text classification:</p>
-      <ul>
-        <li> spam / not spam</li>
-        <li> positive / negative sentiment</li>
-      </ul>
-      <p>Just type any text, choose a classification type, and click "Classify" to see the result.</p>
-      <p>You can also try the sample inputs in the “Suggestions” box.</p>
+      <span class="x-button" @click="closeIntro">X</span>
 
+      <div class="header-container">
+        <h1 class="heading">About this project</h1>
+        <p></p>
+      </div>
+      <div class="text-container">
+
+        <p>This is an educational project I made to explore the basics of machine learning,
+          and get hands-on practice with natural language processing (NLP).<br>
+        I created this user interface to make it easy to interact with the API and test the model directly. <br>
+        <br>The model can classify text in two ways:
+          <ul>
+            <li> spam vs not spam</li>
+            <li> positive or negative sentiment</li>
+          </ul>
+          Select a classification type, enter your text and click "classify” - or click the dice for a random sample.</p>
+
+      </div>
     </div>
+
 
   </div>
 </template>
@@ -52,32 +58,32 @@ export default {
 
 .content-container {
   background-color: rgba(210, 210, 210, 0.5);
-  padding: 3rem;
+  padding: 5rem;
   min-height: 85vh;
   width: 100%;
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  position: relative;
+
 }
 
 p {
   margin-bottom: 1rem;
-  line-height: 0.5rem;
+  font-size: 1.2rem;
+  text-wrap: wrap;
 }
 
+ul {
+  margin: 1rem 0;
+  list-style-type: square;
+  padding-left: 2rem;
 
-@keyframes moveLeft {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: -200% 0;
-  }
 }
 
 .heading {
-  font-size: 3rem;
+  font-size: 2.8rem;
   margin: 0.5rem;
   line-height: 100%;
   font-family: "Tourney", sans-serif;
@@ -97,11 +103,32 @@ p {
   width: 100%;
 }
 
+.text-container {
+  width: 40vw;
+}
+
 
 .x-button {
   padding: 2px;
-  align-self: flex-end;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.8rem;
+  font-family: "Happy Monkey", system-ui;
+  font-size: 1.5rem;
+  color: #999;
+  opacity: 0.5;
 }
+
+.x-button:hover {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+  cursor: pointer;
+}
+
+ul li {
+  color: #109b92;
+}
+
 
 @media (max-width: 800px) {
   .content-container {

@@ -205,7 +205,7 @@ export default {
 .content-container {
   background-color: rgba(210, 210, 210, 0.4);
   padding: 7rem;
-  width: 80vw;
+  width: 70vw;
   min-height: 92vh;
   height: 100%;
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;

@@ -8,6 +8,7 @@
 
       <div v-else key="main">
         <div class="content-container">
+          <i class="fa-solid fa-question" @click="toggleIntro"></i>
           <div class="header-container">
             <h1 class="heading">Classifier</h1>
             <h3 class="second-heading">Analyze your text for spam and emotional tone</h3>
@@ -67,6 +68,8 @@ export default {
   padding: 3rem;
   min-height: 85vh;
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
+  min-width: 50rem;
+  position: relative;
 }
 
 @keyframes moveLeft {
@@ -97,6 +100,21 @@ export default {
   flex-direction: column;
   gap: 0;
   margin-top: 2rem;
+  position: relative;
+}
+
+.fa-solid {
+  color: #999;
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  opacity: 0.5;
+}
+
+.fa-solid:hover {
+  opacity: 1;
+  transition: opacity 0.4s ease-in-out;
+  cursor: pointer;
 }
 
 .second-heading {
