@@ -412,7 +412,7 @@ textarea:focus {
   }
 
   .wrong-result-link {
-    font-size: 0.55rem;
+    font-size: 0.65rem;
   }
 
 }
