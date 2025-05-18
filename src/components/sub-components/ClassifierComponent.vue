@@ -411,6 +411,10 @@ textarea:focus {
     line-height: 1rem;
   }
 
+  .wrong-result-link {
+    font-size: 0.55rem;
+  }
+
 }
 
 
