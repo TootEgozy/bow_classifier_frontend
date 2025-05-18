@@ -248,9 +248,10 @@ textarea:focus {
   resize: none;
   border: 1px solid darkgray;
   border-radius: 3px;
-  padding: 10px 35px 10px 10px;
+  padding: 10px 15px 10px 10px;
   box-sizing: border-box;
   overflow: auto;
+  line-height: 1.3rem;
 }
 
 .clear-text-btn {
@@ -369,6 +370,46 @@ textarea:focus {
 .wrong-result-link:hover {
   opacity: 1;
   transition: opacity 0.2s ease-in-out;
+}
+
+@media (max-width: 650px) {
+  .classifier-container * {
+    font-size: 1rem;
+  }
+
+  .get-input-btn {
+    right: 2.5rem;
+    bottom: 15px;
+    width: 1.05rem;
+    height: auto;
+  }
+
+  .tabs-container {
+    padding: 0.2rem;
+    width: 8vw;
+    min-width: fit-content;
+    height: fit-content;
+  }
+
+  .tab-btn {
+    padding: 0.05rem 0.75rem 0.05rem 0.75rem;
+    font-size: 0.8rem;
+  }
+
+  .tooltip {
+    padding: 0.05rem 0.25rem 0.05rem 0.25rem;
+    font-size: 0.6rem;
+    color: #1b1b1b;
+    bottom: -0.1rem;
+    right: 0;
+    background-color: rgb(255, 255, 255, 0.5);
+  }
+
+  #input_text {
+    font-size: 0.9rem;
+    line-height: 1rem;
+  }
+
 }
 
 

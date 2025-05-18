@@ -68,7 +68,7 @@ export default {
   padding: 3rem;
   min-height: 85vh;
   box-shadow: rgba(0, 0, 0, 0.18) 0 2px 4px;
-  min-width: 50rem;
+  min-width: 40vw;
   position: relative;
 }
 
@@ -162,13 +162,30 @@ strong {
     padding: 1rem;
     margin: 1rem;
   }
+
+  .header-container * {
+    text-wrap: wrap;
+    width: fit-content;
+  }
 }
 
-@media (max-height: 650px) {
+@media (max-width: 650px) {
   .content-container {
     padding: 1rem;
     margin: 1rem;
   }
+
+  .header-container {
+    width: fit-content;
+  }
+  .heading {
+    font-size: 2.2rem;
+  }
+
+  .second-heading {
+    font-size: 1rem;
+  }
+
 }
 
 @media (max-width: 400px) {
@@ -178,8 +195,13 @@ strong {
     margin: 1rem;
   }
 
+  .header-container * {
+    text-wrap: wrap;
+    width: fit-content;
+  }
+
   .heading {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
   }
 
   .second-heading {

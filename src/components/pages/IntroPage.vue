@@ -15,12 +15,12 @@
         <p>This is an educational project I made to explore the basics of machine learning,
           and get hands-on practice with natural language processing (NLP).<br>
         I created this user interface to make it easy to interact with the API and test the model directly. <br>
-        <br>The model can classify text in two ways:
+        <br>The model can classify text in two ways:</p>
           <ul>
             <li> spam vs not spam</li>
             <li> positive or negative sentiment</li>
           </ul>
-          Select a classification type, enter your text and click "classify” - or click the dice for a random sample.</p>
+          <p>Select a classification type, enter your text and click "classify” - or click the dice for a random sample.</p>
 
       </div>
     </div>
@@ -82,6 +82,11 @@ ul {
 
 }
 
+ul li {
+  color: #109b92;
+  font-size: 1.2rem;
+}
+
 .heading {
   font-size: 2.8rem;
   margin: 0.5rem;
@@ -104,7 +109,7 @@ ul {
 }
 
 .text-container {
-  width: 40vw;
+  min-width: 40vw;
 }
 
 
@@ -125,26 +130,31 @@ ul {
   cursor: pointer;
 }
 
-ul li {
-  color: #109b92;
-}
 
 
 @media (max-width: 800px) {
   .content-container {
     max-width: 90%;
     max-height: 100%;
-    padding: 1rem;
+    padding: 2rem;
   }
 }
 
 @media (max-width: 400px) {
   .content-container {
-    padding: 0.5rem;
+    padding: 1rem;
   }
 
   .heading {
-    font-size: 2.5rem;
+    font-size: 2rem;
+  }
+
+  .text-container p {
+    font-size: 1rem;
+  }
+
+  ul li {
+    font-size: 1rem;
   }
 
 }
@@ -152,6 +162,14 @@ ul li {
 @media (max-height: 650px) {
   .content-container {
     padding: 1rem;
+  }
+
+  .text-container {
+    font-size: 1rem;
+  }
+
+  ul li {
+    font-size: 1rem;
   }
 }
 

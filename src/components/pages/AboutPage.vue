@@ -353,11 +353,12 @@ strong {
 @media (max-width: 500px) {
 
   .heading {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
+    margin-left: 0;
   }
 
   .secondary-heading {
-    font-size: 1rem;
+    font-size: 0.9rem;
   }
 
   .content-container {
@@ -367,6 +368,10 @@ strong {
 
   .info-text {
     font-size: 0.8rem;
+  }
+
+  .example-container * {
+    font-size: 0.7rem;
   }
 }
 
