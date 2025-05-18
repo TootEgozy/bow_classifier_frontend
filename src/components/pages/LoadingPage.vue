@@ -38,7 +38,7 @@
 
 .loading_container {
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -74,4 +74,20 @@
 @keyframes l18 {
   100% {transform: rotate(1turn)}
 }
+
+
+@media (max-width: 650px) {
+  * {
+    font-size: 1rem;
+  }
+
+  .loading_msg {
+    font-size: 1rem;
+  }
+
+  .loading-page-container {
+    padding: 2rem;
+  }
+}
+
 </style>

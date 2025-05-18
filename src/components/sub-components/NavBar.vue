@@ -72,4 +72,10 @@ export default {
 .nav-links a:hover {
   text-decoration: underline;
 }
+
+@media (max-width: 500px) {
+  .nav-links li {
+    font-size: 0.9rem;
+  }
+}
 </style>

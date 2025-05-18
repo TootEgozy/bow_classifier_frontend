@@ -187,11 +187,11 @@ export default {
 }
 
 .tabs-container {
-  padding: 0.4rem;
+  padding: 0.4rem 0.3rem;
   background-color: rgb(255, 255, 255, 0.3);
-  border-radius: 0.7rem;
+  border-radius: 0.9rem;
   border: 1px solid darkgray;
-  width: 12vw;
+  width: 10vw;
   min-width: fit-content;
   height: fit-content;
   display: flex;
@@ -208,7 +208,9 @@ export default {
 }
 
 .buttons-separator {
-  width: 0.5rem;
+  width: 0.2rem;
+  padding: 0;
+  margin: 0;
 }
 
 .tab-btn:hover {
@@ -233,7 +235,6 @@ export default {
 .textarea-wrapper {
   position: relative;
   width: 100%;
-  max-width: 42rem;
   margin-top: 0.8rem;
   margin-bottom: 0.5rem;
 }
