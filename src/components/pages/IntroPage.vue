@@ -4,8 +4,6 @@
 
     <div class="content-container ">
 
-      <span class="x-button" @click="closeIntro">X</span>
-
       <div class="header-container">
         <h1 class="heading">About this project</h1>
         <p></p>
@@ -21,8 +19,11 @@
             <li> positive or negative sentiment</li>
           </ul>
           <p>Select a classification type, enter your text and click "classify” - or click the dice for a random sample.</p>
-
+        <br>
       </div>
+
+      <button class="x-button" @click="closeIntro">to classifier</button>
+
     </div>
 
 
@@ -66,7 +67,6 @@ export default {
   flex-direction: column;
   align-items: flex-start;
   position: relative;
-
 }
 
 p {
@@ -110,26 +110,35 @@ ul li {
 
 .text-container {
   min-width: 40vw;
+  position: relative;
 }
 
 
 .x-button {
-  padding: 2px;
-  position: absolute;
-  top: 1.2rem;
-  right: 1.8rem;
-  font-family: "Happy Monkey", system-ui;
-  font-size: 1.5rem;
-  color: #999;
-  opacity: 0.5;
+  margin-top: auto;
+  align-self: center;
+  padding: 0.5rem;
+  font-size: 1.3rem;
+  color: #3a3a3a;
+  background-color: rgb(255, 255, 255, 0.2);
+  border-radius: 0.2rem;
+  border: 1px solid lightgray;
+  box-shadow: rgba(0, 0, 0, 0.18) 0 2px 2px;
 }
 
 .x-button:hover {
-  opacity: 1;
-  transition: opacity 0.4s ease-in-out;
+  color: #109b92;
+  background-color: rgb(255, 255, 255, 0.5);
+  transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
   cursor: pointer;
 }
 
+.x-button:active {
+  color: #0c6862;
+  background-color: rgb(255, 255, 255, 0.5);
+  transition: color 0.4s ease-in-out, background-color 0.4s ease-in-out;
+  cursor: pointer;
+}
 
 
 @media (max-width: 800px) {

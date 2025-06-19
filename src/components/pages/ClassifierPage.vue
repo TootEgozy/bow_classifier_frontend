@@ -104,11 +104,11 @@ export default {
 }
 
 .fa-solid {
-  color: #999;
+  color: #656565;
   position: absolute;
   top: 1.2rem;
   right: 1.2rem;
-  opacity: 0.5;
+  opacity: 0.8;
 }
 
 .fa-solid:hover {
