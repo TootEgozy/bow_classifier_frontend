@@ -22,7 +22,8 @@
         <br>
       </div>
 
-      <button class="x-button" @click="closeIntro">to classifier</button>
+      <button class="x-button" @click="closeIntro">Click To Start</button>
+
 
     </div>
 
@@ -117,7 +118,7 @@ ul li {
 .x-button {
   margin-top: auto;
   align-self: center;
-  padding: 0.5rem;
+  padding: 0.8rem;
   font-size: 1.3rem;
   color: #3a3a3a;
   background-color: rgb(255, 255, 255, 0.2);
