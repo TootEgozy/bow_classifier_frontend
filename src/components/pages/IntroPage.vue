@@ -5,20 +5,20 @@
     <div class="content-container ">
 
       <div class="header-container">
-        <h1 class="heading">About this project</h1>
+        <h1 class="heading">Welcome to classifier GUI</h1>
         <p></p>
       </div>
       <div class="text-container">
 
         <p>This is an educational project I made to explore the basics of machine learning,
           and get hands-on practice with natural language processing (NLP).<br>
-        I created this user interface to make it easy to interact with the API and test the model directly. <br>
+          Most of the magic happens in the backend, but I added this user interface to make it easier to interact with the API and test the model directly. <br>
         <br>The model can classify text in two ways:</p>
           <ul>
             <li> spam vs not spam</li>
             <li> positive or negative sentiment</li>
           </ul>
-          <p>Select a classification type, enter your text and click "classify” - or click the dice for a random sample.</p>
+          <p>Test it out and enjoy :)</p>
         <br>
       </div>
 

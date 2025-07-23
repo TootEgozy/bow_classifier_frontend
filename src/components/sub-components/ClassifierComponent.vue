@@ -259,7 +259,7 @@ textarea:focus {
   position: absolute;
   right: 1rem;
   bottom: 10px;
-  font-size: 1.2rem;
+  font-size: 1.5rem;
   color: #999;
   cursor: pointer;
   z-index: 2;
@@ -267,9 +267,9 @@ textarea:focus {
 
 .get-input-btn {
   position: absolute;
-  right: 2.7rem;
+  right: 2.8rem;
   bottom: 15px;
-  width: 1.2rem;
+  width: 1.5rem;
   height: auto;
   cursor: pointer;
   z-index: 2;
@@ -281,9 +281,9 @@ textarea:focus {
   z-index: 5;
   padding: 0.1rem 0.5rem 0.1rem 0.5rem;
   border-radius: 5px;
-  font-size: 0.7rem;
+  font-size: 0.9rem;
   color: #1b1b1b;
-  bottom: -0.3rem;
+  bottom: -0.7rem;
   right: 0;
   background-color: rgb(255, 255, 255, 0.5);
 }
@@ -362,10 +362,10 @@ textarea:focus {
 }
 
 .wrong-result-link {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   color: #333333;
-  opacity: 0.3;
-  margin-left: 0.1rem;
+  opacity: 0.5;
+  margin-left: 0.3rem;
 }
 
 .wrong-result-link:hover {

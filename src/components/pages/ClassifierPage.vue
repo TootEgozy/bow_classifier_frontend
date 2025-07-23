@@ -11,7 +11,9 @@
           <i class="fa-solid fa-question" @click="toggleIntro"></i>
           <div class="header-container">
             <h1 class="heading">Classifier</h1>
-            <h3 class="second-heading">Analyze your text for spam and emotional tone</h3>
+            <h3 class="second-heading">Paste your text into the box, or click the dice for a random sample. <br>
+              Select a tab to analyze your text for spam or emotional tone.<br>
+              Click "Classify" and get the result!</h3>
           </div>
 
           <div class="classifier-container">
